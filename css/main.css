@@ -29,6 +29,10 @@ code {
   background-color: rgba(0, 0, 0, 0.02);
 }
 
+img {
+  max-width: 100%;
+}
+
 .wrapper {
   overflow: hidden;
   position: relative;
@@ -37,7 +41,7 @@ code {
 .header {
   padding: 20px 0;
   position: relative;
-  background: #030360;
+  background: #f5f5f5;
   border-bottom: 1px solid #eaeaea;
 }
 
@@ -59,8 +63,10 @@ code {
 }
 
 .nav-logo img {
+  display: block;
   max-height: 40px;
   width: auto;
+  border-radius: 50%;
 }
 
 .nav-links {
@@ -81,11 +87,11 @@ code {
 
 .nav-links a {
   text-decoration: none;
-  color: #fff;
+  color: #111;
 }
 
 .nav-links a:hover {
-  color: #888;
+  color: #000;
 }
 
 .content {

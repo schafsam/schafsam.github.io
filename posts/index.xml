@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Sc Online</title>
+    <link>https://schafsam.github.io/posts/</link>
+    <description>Recent content in Posts on Sc Online</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 28 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://schafsam.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MongoDB for Data-Intensive Applications</title>
+      <link>https://schafsam.github.io/posts/mongodb-backend-engine/</link>
+      <pubDate>Fri, 28 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://schafsam.github.io/posts/mongodb-backend-engine/</guid>
+      <description>MongoDB is scalable and schema-less NoSQL key-value storage, which makes it handy for applications to use as a persistent layer. The two features in this post views and change streams from MongoDB can turn your application into a full-fetched back-end engine for data-intensive applications.
+Change Streams Since MongoDB 3.6 you can use change streams to create event-driven applications for data processing. Whenever an update occurs in a specific collection, MongoDB triggers a change event with the modified data.</description>
+    </item>
+    
+  </channel>
+</rss>

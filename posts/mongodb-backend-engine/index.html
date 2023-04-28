@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.110.0">
+
+
+<title>MongoDB for Data-Intensive Applications - Sc Online</title>
+<meta property="og:title" content="MongoDB for Data-Intensive Applications - Sc Online">
+
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+<link rel="stylesheet" href="/css/custom.css">
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "MongoDB for Data-Intensive Applications",
+  "image": "https://schafsam.github.io/",
+  "datePublished": "2023-04-28T00:00:00Z",
+  "dateModified": "2023-04-28T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Schafsam"
+  },
+  "mainEntityOfPage": { "@type": "WebPage" },
+   "publisher": {
+    "@type": "Organization",
+    "name":  null ,
+    "logo": {
+      "@type": "ImageObject",
+      "url": {"alt":"Logo","height":50,"url":"logo.png","width":50}
+    }
+  },
+  "description": "MongoDB is scalable and schema-less NoSQL key-value storage, which makes it handy for applications to use as a persistent layer. The two features in this post views and change streams from MongoDB can turn your application into a full-fetched back-end engine for data-intensive applications.\nChange Streams Since MongoDB 3.6 you can use change streams to create event-driven applications for data processing. Whenever an update occurs in a specific collection, MongoDB triggers a change event with the modified data.",
+  "keywords": []
+}
+
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name":  null ,
+  "url": "https://schafsam.github.io/",
+  "sameAs": [
+    "https://github.com/https:\/\/github.com\/schafsam"
+  ]
+}
+</script>
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/posts/">Blog</a></li>
+    
+    <li><a href="/resume/">Resume</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">MongoDB for Data-Intensive Applications</h1>
+
+    
+
+    <div class="article-content">
+      <p>MongoDB is scalable and schema-less NoSQL key-value storage, which makes it handy for applications to use as a persistent layer. The two features in this post views and change streams from MongoDB can turn your application into a full-fetched back-end engine for <a href="https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/">data-intensive applications</a>.</p>
+<h2 id="change-streams">Change Streams</h2>
+<p>Since MongoDB 3.6 you can use <a href="https://www.mongodb.com/docs/manual/changeStreams/">change streams</a> to create event-driven applications for data processing.
+Whenever an update occurs in a specific collection, MongoDB triggers a change event with the modified data. With this functionality you can implement the design pattern <a href="https://en.wikipedia.org/wiki/Change_data_capture">change data capture (CDC)</a> and other systems or applications can automatically consume the change in real time. This can be useful in a variety of scenarios, such as keeping a distributed cache up-to-date, triggering notifications, or synchronizing data across different systems.</p>
+<p>One of the key benefits of using change streams is that they are integrated into MongoDB natively, so there is no need to set up a separate event processing engine or an orchestration tool. Additionally, change streams are scalable, so they can handle high volumes of updates without impacting performance.</p>
+<p>A common way to run ETL jobs is through an orchestration tool, which triggers in a periodic cycle one task after the other and manages the dependencies. Like in the illustration below.</p>
+<p><img src="/images/orchestration-database.svg" alt="Orchestration with database"></p>
+<p>To replace such an idea with real-time processing would mean that every transformation script watches the collection of the previous step. So the dependencies are managed by MongoDB and the timing is instant. The data is written from one collection to another. To minimize the disk footprint only the derived or updated data is added to the output collection with a reference to the original document.</p>
+<p><img src="/images/mongo-change-stream.svg" alt="MongoDB change steam"></p>
+<p>If the transformation script fails, it needs to be restarted and resume its work. MongoDB does feature a <a href="https://vinta.ws/code/mongodb-change-stream-react-to-real-time-data-changes.html">resumability</a>.</p>
+<h2 id="views">Views</h2>
+<p>MongoDB offers the same feature as in other SQL databases - <a href="https://www.mongodb.com/docs/manual/core/views/">views</a>.</p>
+<blockquote>
+<p>A MongoDB view is a read-only queryable object whose contents are defined by an <a href="https://www.mongodb.com/docs/manual/core/aggregation-pipeline/#std-label-aggregation-pipeline">aggregation pipeline</a> on other collections or views.
+MongoDB <em>does not persist</em> the view contents to disk. A view&rsquo;s content is computed on-demand when a client queries the view.</p>
+</blockquote>
+<p>These facts make views helpful to hide joins from the main query or to derive computed fields on query time. Reporting or dashboarding have typically these needs. Instead of creating a read-only API, you provide a view.</p>
+<h2 id="summary">Summary</h2>
+<p>In conclusion, MongoDB is a powerful NoSQL database that provides various features to support data-intensive applications. The change streams functionality enables real-time processing and event-driven applications without the need for external tools or engines. Views are also a useful tool for reporting and dashboarding purposes. Overall, MongoDB&rsquo;s scalability and flexibility make it a great choice for modern data applications.</p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+
+    
+  </body>
+</html>
+
