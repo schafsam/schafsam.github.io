@@ -6,36 +6,35 @@
     <description>Recent content in Main on Sc Online</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://schafsam.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://schafsam.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OData Syntax</title>
+      <link>https://schafsam.github.io/posts/2024-02-03-odata-syntax/</link>
+      <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://schafsam.github.io/posts/2024-02-03-odata-syntax/</guid>
+      <description>Microsoft&amp;rsquo; data service commonly provide RESTful interfaces that utilize OData syntax. Beside the option to retrieve all records beloning to a entity you have the ability to specify additional filter criteria for your query. The filter employs various syntax and operators, including acronyms such as eq for equal and gt for greater than, among others.&#xA;Symbol Operator Example eq = $filter=size eq 100 ne != $filter=size ne 200 gt &amp;gt; $filter=size gt 50 ge &amp;gt;= $filter=size ge 100 lt &amp;lt; $filter=size lt 300 le &amp;lt;= $filter=size le 125 and &amp;amp; $filter=size gt 100 and size lt 200 or | $filter=size lt 10 or size gt 400 not !</description>
+    </item>
     <item>
       <title>MongoDB for Data-Intensive Applications</title>
       <link>https://schafsam.github.io/posts/mongodb-backend-engine/</link>
       <pubDate>Fri, 28 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://schafsam.github.io/posts/mongodb-backend-engine/</guid>
-      <description>MongoDB is scalable and schema-less NoSQL key-value storage, which makes it handy for applications to use as a persistent layer. The two features in this post views and change streams from MongoDB can turn your application into a full-fetched back-end engine for data-intensive applications.
-Change Streams Since MongoDB 3.6 you can use change streams to create event-driven applications for data processing. Whenever an update occurs in a specific collection, MongoDB triggers a change event with the modified data.</description>
+      <description>MongoDB is scalable and schema-less NoSQL key-value storage, which makes it handy for applications to use as a persistent layer. The two features in this post views and change streams from MongoDB can turn your application into a full-fetched back-end engine for data-intensive applications.&#xA;Change Streams Since MongoDB 3.6 you can use change streams to create event-driven applications for data processing. Whenever an update occurs in a specific collection, MongoDB triggers a change event with the modified data.</description>
     </item>
-    
     <item>
       <title>About</title>
       <link>https://schafsam.github.io/about/</link>
       <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
-      
       <guid>https://schafsam.github.io/about/</guid>
-      <description>Me As a trained statistician with a passion for coding, I have honed my abilities to leverage data and drive insights. Python is my current go-to when it comes to programming languages, however, I am drawn to the power and potential of Rust. In my current role as a data scientist and machine learning engineer, I am constantly pushing the boundaries of what is possible with data-driven solutions.
-The Page The post from https://juliasilge.</description>
+      <description>Me As a trained statistician with a passion for coding, I have honed my abilities to leverage data and drive insights. Python is my current go-to when it comes to programming languages, however, I am drawn to the power and potential of Rust. In my current role as a data scientist and machine learning engineer, I am constantly pushing the boundaries of what is possible with data-driven solutions.&#xA;The Page The post from https://juliasilge.</description>
     </item>
-    
     <item>
       <title>Resume</title>
       <link>https://schafsam.github.io/resume/</link>
       <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
-      
       <guid>https://schafsam.github.io/resume/</guid>
-      <description>Interests Machine Learning, Deep Learning, Natural Language Processsing (NLP), Python, Rust
-Eudcation 2017 MSc in Statistics at the Seminar for Statistics from ETH Zürich</description>
+      <description>Interests Machine Learning, Deep Learning, Natural Language Processsing (NLP), Python, Rust&#xA;Eudcation 2017 MSc in Statistics at the Seminar for Statistics from ETH Zürich</description>
     </item>
-    
   </channel>
 </rss>
