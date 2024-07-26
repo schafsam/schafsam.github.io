@@ -6,8 +6,15 @@
     <description>Recent content in Main on Sc Online</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://schafsam.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Global Information Tracker (git)</title>
+      <link>https://schafsam.github.io/posts/git-version-control/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://schafsam.github.io/posts/git-version-control/</guid>
+      <description>The git commands I like to remember.&#xA;Forgott a Thing To change your last commit and add something or fix a typo in the commit messag, use --amend:&#xA;git commit -m &amp;#34;initial commit&amp;#34; git add the_file.txt git commit --amend You can now overwrite your previous commit and have just one clean commit.</description>
+    </item>
     <item>
       <title>OData Syntax</title>
       <link>https://schafsam.github.io/posts/2024-02-03-odata-syntax/</link>

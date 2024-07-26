@@ -1,0 +1,8 @@
+{
+    odata.metadata: "http://.../$metadata",
+    value:
+    [
+        {name: "Soupons", url: "Soupons"},
+        {name: "Users", url: "Users"}
+    ]
+}
