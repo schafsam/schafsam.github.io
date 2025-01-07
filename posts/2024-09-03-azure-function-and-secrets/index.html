@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.123.7">
+
+
+<title>Get Secrets from Vault in an Azure Function - Sc Online</title>
+<meta property="og:title" content="Get Secrets from Vault in an Azure Function - Sc Online">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+<link rel="stylesheet" href="/css/custom.css">
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Get Secrets from Vault in an Azure Function",
+  "image": "https://schafsam.github.io/",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Schafsam"
+  },
+  "mainEntityOfPage": { "@type": "WebPage" },
+   "publisher": {
+    "@type": "Organization",
+    "name":  null ,
+    "logo": {
+      "@type": "ImageObject",
+      "url": {"alt":"Logo","height":50,"url":"logo.png","width":50}
+    }
+  },
+  "description": "Get the Secrets To retrieve the secrets from Azure Key Vault there are two ways. First, by using the azure-keyvault package and second via environment variables.\nPackage Add the azure-keyvault and azure-identity package to your Azure Functions App.\npip install azure-identity pip install azure-keyvault Within the function use this code\nfrom azure.identity import DefaultAzureCredential from azure.keyvault.secrets import SecretClient credential = DefaultAzureCredential() client = SecretClient(vault_url=\u0026#34;https://\u0026lt;vaultname\u0026gt;.vault.azure.net\u0026#34;, credential=credential) secret = client.get_secret(\u0026#34;\u0026lt;secret-name\u0026gt;\u0026#34;) print(secret.name) print(secret.value) Further infos for the Key vault sdk check out Link.",
+  "keywords": []
+}
+
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name":  null ,
+  "url": "https://schafsam.github.io/",
+  "sameAs": [
+    "https://github.com/https:\/\/github.com\/schafsam"
+  ]
+}
+</script>
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/posts/">Blog</a></li>
+    
+    <li><a href="/resume/">Resume</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">Get Secrets from Vault in an Azure Function</h1>
+
+    
+
+    <div class="article-content">
+      
+      <h2 id="get-the-secrets">Get the Secrets</h2>
+<p>To retrieve the secrets from Azure Key Vault there are two ways. First, by using the <code>azure-keyvault</code> package and second via environment variables.</p>
+<h3 id="package">Package</h3>
+<p>Add the <code>azure-keyvault</code> and <code>azure-identity</code> package to your Azure Functions App.</p>
+<pre tabindex="0"><code>pip install azure-identity 
+pip install azure-keyvault
+</code></pre><p>Within the function use this code</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> azure.identity <span style="color:#f92672">import</span> DefaultAzureCredential 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> azure.keyvault.secrets <span style="color:#f92672">import</span> SecretClient 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>credential <span style="color:#f92672">=</span> DefaultAzureCredential() 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>client <span style="color:#f92672">=</span> SecretClient(vault_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://&lt;vaultname&gt;.vault.azure.net&#34;</span>,
+</span></span><span style="display:flex;"><span>credential<span style="color:#f92672">=</span>credential) 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>secret <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>get_secret(<span style="color:#e6db74">&#34;&lt;secret-name&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>print(secret<span style="color:#f92672">.</span>name)
+</span></span><span style="display:flex;"><span>print(secret<span style="color:#f92672">.</span>value)
+</span></span></code></pre></div><p>Further infos for the Key vault sdk check out <a href="https://learn.microsoft.com/en-us/python/api/overview/azure/keyvault-secrets-readme?view=azure-python#retrieve-a-secret">Link</a>.</p>
+<p>One advatage this approach has over the direct injection into environments variable is that you can update the secret at run time. This by simply refetch the infromation from the vault. [Todo: verify this statement]</p>
+<h3 id="store-secrets-as-environment-variables">Store Secrets as Environment Variables</h3>
+<p>Alternatively, you can store secrets as environment variables in your Azure Functions App. This is done via the app settings (<a href="https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references?tabs=azure-cli">Link</a>). To do this,</p>
+<ol>
+<li>Go to the Azure Functions App in the Azure Portal, and go to <em>Settings</em> &gt; <em>Configurations</em>.</li>
+<li>Then click on the “New application setting” button.</li>
+<li>Enter the name of the environment variable and for the value secret identifier you copied before. Use below syntax for the value,</li>
+</ol>
+<pre tabindex="0"><code>@Microsoft.KeyVault(SecretUri=&lt;copied-value&gt;)
+</code></pre><p>Alternatively</p>
+<pre tabindex="0"><code>@Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret)
+</code></pre>
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/python.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

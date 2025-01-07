@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://schafsam.github.io/posts/git-version-control/</loc>
-    <lastmod>2024-07-01T00:00:00+00:00</lastmod>
+    <loc>https://schafsam.github.io/posts/2024-12-22-auto-synch-to-external-disk/</loc>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/</loc>
-    <lastmod>2024-07-01T00:00:00+00:00</lastmod>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/posts/</loc>
+    <lastmod>2024-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://schafsam.github.io/posts/git-version-control/</loc>
     <lastmod>2024-07-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/posts/2024-02-03-odata-syntax/</loc>
@@ -24,6 +27,8 @@
     <lastmod>2016-05-05T21:48:51-07:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/categories/</loc>
+  </url><url>
+    <loc>https://schafsam.github.io/posts/2024-09-03-azure-function-and-secrets/</loc>
   </url><url>
     <loc>https://schafsam.github.io/tags/</loc>
   </url>

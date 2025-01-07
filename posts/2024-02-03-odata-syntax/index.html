@@ -52,7 +52,7 @@
       "url": {"alt":"Logo","height":50,"url":"logo.png","width":50}
     }
   },
-  "description": "Microsoft\u0026rsquo; data service commonly provide RESTful interfaces that utilize OData syntax. Beside the option to retrieve all records beloning to a entity you have the ability to specify additional filter criteria for your query. The filter employs various syntax and operators, including acronyms such as eq for equal and gt for greater than, among others.\nSymbol Operator Example eq = $filter=size eq 100 ne != $filter=size ne 200 gt \u0026gt; $filter=size gt 50 ge \u0026gt;= $filter=size ge 100 lt \u0026lt; $filter=size lt 300 le \u0026lt;= $filter=size le 125 and \u0026amp; $filter=size gt 100 and size lt 200 or | $filter=size lt 10 or size gt 400 not !",
+  "description": "Microsoft\u0026rsquo; data service commonly provide RESTful interfaces that utilize OData syntax.\nFilter Rows Beside the option to retrieve all records beloning to a entity you have the ability to specify additional filter criteria for your query. The filter employs various syntax and operators, including acronyms such as eq for equal and gt for greater than, among others.\nSymbol Operator Example eq = $filter=size eq 100 ne != $filter=size ne 200 gt \u0026gt; $filter=size gt 50 ge \u0026gt;= $filter=size ge 100 lt \u0026lt; $filter=size lt 300 le \u0026lt;= $filter=size le 125 and \u0026amp; $filter=size gt 100 and size lt 200 or | $filter=size lt 10 or size gt 400 not !",
   "keywords": []
 }
 
@@ -108,7 +108,9 @@
 
     <div class="article-content">
       
-      <p>Microsoft&rsquo; data service commonly provide RESTful interfaces that utilize <a href="https://www.odata.org/getting-started/basic-tutorial/">OData syntax</a>. Beside the option to retrieve all records beloning to a entity you have the ability to specify additional <code>filter</code> criteria for your query. The filter employs various syntax and operators, including acronyms such as <strong><code>eq</code></strong> for equal and <strong><code>gt</code></strong> for greater than, among others.</p>
+      <p>Microsoft&rsquo; data service commonly provide RESTful interfaces that utilize <a href="https://www.odata.org/getting-started/basic-tutorial/">OData syntax</a>.</p>
+<h2 id="filter-rows">Filter Rows</h2>
+<p>Beside the option to retrieve all records beloning to a entity you have the ability to specify additional <code>filter</code> criteria for your query. The filter employs various syntax and operators, including acronyms such as <strong><code>eq</code></strong> for equal and <strong><code>gt</code></strong> for greater than, among others.</p>
 <table>
 <thead>
 <tr>
@@ -185,7 +187,33 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div>
+</span></span></code></pre></div><h2 id="limit-rows">Limit rows</h2>
+<p>The <code>top</code> command lets you limit the number of records your query will return.</p>
+<pre tabindex="0"><code>/accounts?$top=10
+</code></pre><h2 id="joining-tables">Joining Tables</h2>
+<p>The way to join tables in Odata is to make use of the <code>expand</code> command which will return a nested document with the related items. For example to looks up all acounts and joins them with their addresses use the follwing query:</p>
+<pre tabindex="0"><code>crm.dynamics.com/api/data/v9.2/acoutns?$select=name&amp;$expand=Account_CustomerAddrss
+</code></pre><p>The <code>expand</code> command takes a relationship to resolve the link between the tables. To know what name the relationship has you can do the following.</p>
+<p>On the address table go to relationshpas and search for the name of the relationship to your source table.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Display name</th>
+<th style="text-align:left">Name</th>
+<th style="text-align:left">Related table</th>
+<th style="text-align:left">Relationship type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Parent</td>
+<td style="text-align:left">Account_CustomerAddress</td>
+<td style="text-align:left">Account</td>
+<td style="text-align:left">Many-to-one</td>
+</tr>
+</tbody>
+</table>
+
     </div>
   </article>
 

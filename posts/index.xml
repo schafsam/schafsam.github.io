@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Sc Online</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://schafsam.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Auto Synch Data to External Disk</title>
+      <link>https://schafsam.github.io/posts/2024-12-22-auto-synch-to-external-disk/</link>
+      <pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://schafsam.github.io/posts/2024-12-22-auto-synch-to-external-disk/</guid>
+      <description>The internet is full of usefull information that is accessable from everywhere. Unfortunately some information is only available for a certain period of time. For instance, while you can stream real-time tick data from stock markets, accessing historical data may only provide per-minute aggregates. Similarly, request for proposals (RFPs) are typically only available for a set period of time before they are taken down from the web.&#xA;This makes all sense because storage is not for free and the amount of data would grow over the top.</description>
+    </item>
     <item>
       <title>Global Information Tracker (git)</title>
       <link>https://schafsam.github.io/posts/git-version-control/</link>
@@ -20,7 +27,7 @@
       <link>https://schafsam.github.io/posts/2024-02-03-odata-syntax/</link>
       <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
       <guid>https://schafsam.github.io/posts/2024-02-03-odata-syntax/</guid>
-      <description>Microsoft&amp;rsquo; data service commonly provide RESTful interfaces that utilize OData syntax. Beside the option to retrieve all records beloning to a entity you have the ability to specify additional filter criteria for your query. The filter employs various syntax and operators, including acronyms such as eq for equal and gt for greater than, among others.&#xA;Symbol Operator Example eq = $filter=size eq 100 ne != $filter=size ne 200 gt &amp;gt; $filter=size gt 50 ge &amp;gt;= $filter=size ge 100 lt &amp;lt; $filter=size lt 300 le &amp;lt;= $filter=size le 125 and &amp;amp; $filter=size gt 100 and size lt 200 or | $filter=size lt 10 or size gt 400 not !</description>
+      <description>Microsoft&amp;rsquo; data service commonly provide RESTful interfaces that utilize OData syntax.&#xA;Filter Rows Beside the option to retrieve all records beloning to a entity you have the ability to specify additional filter criteria for your query. The filter employs various syntax and operators, including acronyms such as eq for equal and gt for greater than, among others.&#xA;Symbol Operator Example eq = $filter=size eq 100 ne != $filter=size ne 200 gt &amp;gt; $filter=size gt 50 ge &amp;gt;= $filter=size ge 100 lt &amp;lt; $filter=size lt 300 le &amp;lt;= $filter=size le 125 and &amp;amp; $filter=size gt 100 and size lt 200 or | $filter=size lt 10 or size gt 400 not !</description>
     </item>
     <item>
       <title>MongoDB for Data-Intensive Applications</title>
@@ -28,6 +35,13 @@
       <pubDate>Fri, 28 Apr 2023 00:00:00 +0000</pubDate>
       <guid>https://schafsam.github.io/posts/mongodb-backend-engine/</guid>
       <description>MongoDB is scalable and schema-less NoSQL key-value storage, which makes it handy for applications to use as a persistent layer. The two features in this post views and change streams from MongoDB can turn your application into a full-fetched back-end engine for data-intensive applications.&#xA;Change Streams Since MongoDB 3.6 you can use change streams to create event-driven applications for data processing. Whenever an update occurs in a specific collection, MongoDB triggers a change event with the modified data.</description>
+    </item>
+    <item>
+      <title>Get Secrets from Vault in an Azure Function</title>
+      <link>https://schafsam.github.io/posts/2024-09-03-azure-function-and-secrets/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://schafsam.github.io/posts/2024-09-03-azure-function-and-secrets/</guid>
+      <description>Get the Secrets To retrieve the secrets from Azure Key Vault there are two ways. First, by using the azure-keyvault package and second via environment variables.&#xA;Package Add the azure-keyvault and azure-identity package to your Azure Functions App.&#xA;pip install azure-identity pip install azure-keyvault Within the function use this code&#xA;from azure.identity import DefaultAzureCredential from azure.keyvault.secrets import SecretClient credential = DefaultAzureCredential() client = SecretClient(vault_url=&amp;#34;https://&amp;lt;vaultname&amp;gt;.vault.azure.net&amp;#34;, credential=credential) secret = client.get_secret(&amp;#34;&amp;lt;secret-name&amp;gt;&amp;#34;) print(secret.name) print(secret.value) Further infos for the Key vault sdk check out Link.</description>
     </item>
   </channel>
 </rss>
