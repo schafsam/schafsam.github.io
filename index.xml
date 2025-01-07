@@ -16,6 +16,13 @@
       <description>The internet is full of usefull information that is accessable from everywhere. Unfortunately some information is only available for a certain period of time. For instance, while you can stream real-time tick data from stock markets, accessing historical data may only provide per-minute aggregates. Similarly, request for proposals (RFPs) are typically only available for a set period of time before they are taken down from the web.&#xA;This makes all sense because storage is not for free and the amount of data would grow over the top.</description>
     </item>
     <item>
+      <title>Get Secrets from Vault in an Azure Function</title>
+      <link>https://schafsam.github.io/posts/2024-09-03-azure-function-and-secrets/</link>
+      <pubDate>Tue, 03 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://schafsam.github.io/posts/2024-09-03-azure-function-and-secrets/</guid>
+      <description>Get the Secrets To retrieve the secrets from Azure Key Vault there are two ways. First, by using the azure-keyvault package and second via environment variables.&#xA;Package Add the azure-keyvault and azure-identity package to your Azure Functions App.&#xA;pip install azure-identity pip install azure-keyvault Within the function use this code&#xA;from azure.identity import DefaultAzureCredential from azure.keyvault.secrets import SecretClient credential = DefaultAzureCredential() client = SecretClient(vault_url=&amp;#34;https://&amp;lt;vaultname&amp;gt;.vault.azure.net&amp;#34;, credential=credential) secret = client.get_secret(&amp;#34;&amp;lt;secret-name&amp;gt;&amp;#34;) print(secret.name) print(secret.value) Further infos for the Key vault sdk check out Link.</description>
+    </item>
+    <item>
       <title>Global Information Tracker (git)</title>
       <link>https://schafsam.github.io/posts/git-version-control/</link>
       <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
@@ -49,13 +56,6 @@
       <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
       <guid>https://schafsam.github.io/resume/</guid>
       <description>Interests Machine Learning, Deep Learning, Natural Language Processsing (NLP), Python, Rust&#xA;Eudcation 2017 MSc in Statistics at the Seminar for Statistics from ETH Zürich</description>
-    </item>
-    <item>
-      <title>Get Secrets from Vault in an Azure Function</title>
-      <link>https://schafsam.github.io/posts/2024-09-03-azure-function-and-secrets/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://schafsam.github.io/posts/2024-09-03-azure-function-and-secrets/</guid>
-      <description>Get the Secrets To retrieve the secrets from Azure Key Vault there are two ways. First, by using the azure-keyvault package and second via environment variables.&#xA;Package Add the azure-keyvault and azure-identity package to your Azure Functions App.&#xA;pip install azure-identity pip install azure-keyvault Within the function use this code&#xA;from azure.identity import DefaultAzureCredential from azure.keyvault.secrets import SecretClient credential = DefaultAzureCredential() client = SecretClient(vault_url=&amp;#34;https://&amp;lt;vaultname&amp;gt;.vault.azure.net&amp;#34;, credential=credential) secret = client.get_secret(&amp;#34;&amp;lt;secret-name&amp;gt;&amp;#34;) print(secret.name) print(secret.value) Further infos for the Key vault sdk check out Link.</description>
     </item>
   </channel>
 </rss>
