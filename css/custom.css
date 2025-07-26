@@ -10,6 +10,13 @@ img {
   border-bottom: 1px solid #eaeaea;
 }
 
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  text-align: right;
+}
+
 .nav-logo img {
   max-height: 40px;
   width: auto;

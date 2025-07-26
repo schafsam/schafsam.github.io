@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MS Dynamics 365 on Sc Online</title>
+    <link>https://schafsam.github.io/tags/ms-dynamics-365/</link>
+    <description>Recent content in MS Dynamics 365 on Sc Online</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 03 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://schafsam.github.io/tags/ms-dynamics-365/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OData Syntax</title>
+      <link>https://schafsam.github.io/posts/2024-02-03-odata-syntax/</link>
+      <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://schafsam.github.io/posts/2024-02-03-odata-syntax/</guid>
+      <description>Microsoft&amp;rsquo; data service commonly provide RESTful interfaces that utilize OData syntax.&#xA;Filter Rows Beside the option to retrieve all records beloning to a entity you have the ability to specify additional filter criteria for your query. The filter employs various syntax and operators, including acronyms such as eq for equal and gt for greater than, among others.&#xA;Symbol Operator Example eq = $filter=size eq 100 ne != $filter=size ne 200 gt &amp;gt; $filter=size gt 50 ge &amp;gt;= $filter=size ge 100 lt &amp;lt; $filter=size lt 300 le &amp;lt;= $filter=size le 125 and &amp;amp; $filter=size gt 100 and size lt 200 or | $filter=size lt 10 or size gt 400 not !</description>
+    </item>
+  </channel>
+</rss>

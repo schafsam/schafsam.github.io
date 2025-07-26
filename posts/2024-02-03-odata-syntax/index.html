@@ -53,7 +53,7 @@
     }
   },
   "description": "Microsoft\u0026rsquo; data service commonly provide RESTful interfaces that utilize OData syntax.\nFilter Rows Beside the option to retrieve all records beloning to a entity you have the ability to specify additional filter criteria for your query. The filter employs various syntax and operators, including acronyms such as eq for equal and gt for greater than, among others.\nSymbol Operator Example eq = $filter=size eq 100 ne != $filter=size ne 200 gt \u0026gt; $filter=size gt 50 ge \u0026gt;= $filter=size ge 100 lt \u0026lt; $filter=size lt 300 le \u0026lt;= $filter=size le 125 and \u0026amp; $filter=size gt 100 and size lt 200 or | $filter=size lt 10 or size gt 400 not !",
-  "keywords": []
+  "keywords": ["MS Dynamics 365"]
 }
 
 {
@@ -173,27 +173,30 @@
 </tbody>
 </table>
 <p>The query response has the following schema.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  odata.metadata: <span style="color:#e6db74">&#34;http://.../</span>$metadata<span style="color:#e6db74">&#34;</span>,
-</span></span><span style="display:flex;"><span>  value:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        name: <span style="color:#e6db74">&#34;Crocodile&#34;</span>,
-</span></span><span style="display:flex;"><span>        url: <span style="color:#e6db74">&#34;https://en.wikipedia.org/wiki/Crocodile&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>        name: <span style="color:#e6db74">&#34;Alligator&#34;</span>,
-</span></span><span style="display:flex;"><span>        url: <span style="color:#e6db74">&#34;https://en.wikipedia.org/wiki/American_alligator&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><h2 id="limit-rows">Limit rows</h2>
+<pre><code class="language-bash">{
+  odata.metadata: &quot;http://.../$metadata&quot;,
+  value:
+    [
+      {
+        name: &quot;Crocodile&quot;,
+        url: &quot;https://en.wikipedia.org/wiki/Crocodile&quot;
+      },
+      {
+        name: &quot;Alligator&quot;,
+        url: &quot;https://en.wikipedia.org/wiki/American_alligator&quot;
+      }
+    ]
+}
+</code></pre>
+<h2 id="limit-rows">Limit rows</h2>
 <p>The <code>top</code> command lets you limit the number of records your query will return.</p>
-<pre tabindex="0"><code>/accounts?$top=10
-</code></pre><h2 id="joining-tables">Joining Tables</h2>
+<pre><code>/accounts?$top=10
+</code></pre>
+<h2 id="joining-tables">Joining Tables</h2>
 <p>The way to join tables in Odata is to make use of the <code>expand</code> command which will return a nested document with the related items. For example to looks up all acounts and joins them with their addresses use the follwing query:</p>
-<pre tabindex="0"><code>crm.dynamics.com/api/data/v9.2/acoutns?$select=name&amp;$expand=Account_CustomerAddrss
-</code></pre><p>The <code>expand</code> command takes a relationship to resolve the link between the tables. To know what name the relationship has you can do the following.</p>
+<pre><code>crm.dynamics.com/api/data/v9.2/acoutns?$select=name&amp;$expand=Account_CustomerAddrss
+</code></pre>
+<p>The <code>expand</code> command takes a relationship to resolve the link between the tables. To know what name the relationship has you can do the following.</p>
 <p>On the address table go to relationshpas and search for the name of the relationship to your source table.</p>
 <table>
 <thead>
@@ -213,6 +216,23 @@
 </tr>
 </tbody>
 </table>
+<h3 id="multiple-joins">Multiple Joins</h3>
+<p>A common way to join multiple lookups at the same time it is possible to state the tables with a comma separated.</p>
+<pre><code>...contacts(1939100)/?$expand=firstTable,secondTable
+</code></pre>
+<h2 id="update-records-with-lookup">Update Records with Lookup</h2>
+<p>Records are connected to each other through <em>relationships</em>, with a foreign key set on one side of the relationship. In the context of OData, this is called binding.
+<a href="https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/associate-disassociate-entities-using-web-api">Assosiate with a single-valued naviagtion property</a>.</p>
+<pre><code>{
+  &quot;parentcustomerid_account@odata.bind&quot;: &quot;/accounts&quot;
+}
+</code></pre>
+<p>An example from Microsoft Dynamics 365 Web API to set the field Regarding.</p>
+<pre><code>{
+  &quot;regardingobjectid_account@odata.bind&quot;: &quot;/accounts(a8d8cf490-...-6405bd2b29d8)&quot;
+}
+</code></pre>
+<p>Send this data as a POST request will set the field &ldquo;_regardingobejctid_value&rdquo; with the according GUID.</p>
 
     </div>
   </article>
@@ -249,7 +269,7 @@
 
     
 <script src="/js/math-code.js"></script>
-<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
     

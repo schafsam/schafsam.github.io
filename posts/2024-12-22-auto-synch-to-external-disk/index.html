@@ -119,48 +119,52 @@ While analysis or aggregations are performed on the mounted external ssd. My dis
 Since I work with a MacBook this seems to be best possible with a <a href="x-man-page://launchd"><code>launchd</code></a> job. <code>crontab</code> does not seem to be the way ahead.</p>
 <h2 id="faild-attempt-with-bash">Faild Attempt with Bash</h2>
 <p>Instead of using the AppleScript as describe next I first tried to start from launchd a bash script. The downfall were the file permission and giveing bash &ldquo;Full Disk Access&rdquo; was not a prefered option. Therefore, I switch to use AppleScript.</p>
-<pre tabindex="0"><code>&lt;key&gt;Program&lt;/key&gt;
+<pre><code>&lt;key&gt;Program&lt;/key&gt;
 &lt;string&gt;/Users/username/Scripts/external-volume-synch.sh&lt;/string&gt;
-</code></pre><h2 id="applescript-to-run-rsync">AppleScript to Run rsync</h2>
+</code></pre>
+<h2 id="applescript-to-run-rsync">AppleScript to Run rsync</h2>
 <p>The actual solution consists of an AppleScript that checks if the target disk <code>RemovableDiskName</code> is mounted and uses <a href="x-man-page://rsync"><code>rsync</code></a> with the archive mode to do the data sync.</p>
-<pre tabindex="0"><code class="language-osascript" data-lang="osascript">set RemovableDiskName to &#34;Extreme Pro&#34;
-tell application &#34;System Events&#34; to set MountedDisks to name of every disk
+<pre><code class="language-osascript">set RemovableDiskName to &quot;Extreme Pro&quot;
+tell application &quot;System Events&quot; to set MountedDisks to name of every disk
 if RemovableDiskName is in MountedDisks then
     try
-        do shell script &#34;rsync -au &#39;/Source/Path&#39; &#39;/Destination/Path&#39;&#34;
+        do shell script &quot;rsync -au '/Source/Path' '/Destination/Path'&quot;
         delay 1
     on error  e
-        display dialog &#34;An error occured: &#34; &amp; e
+        display dialog &quot;An error occured: &quot; &amp; e
     end try
 end if
-</code></pre><h2 id="the-launchagent">The LaunchAgent</h2>
+</code></pre>
+<h2 id="the-launchagent">The LaunchAgent</h2>
 <p>An <strong>agent</strong> is a process that runs on behalf of a user in the background. Contrary to daemons who run as part of the system. The agent description below contains the key <code>startOnMount</code> set to <code>true</code>. This will envoke the AppleScript when ever a disk is mounted.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE plist PUBLIC &#34;-//Apple//DTD PLIST 1.0//EN&#34; &#34;http://www.apple.com/DTDs/PropertyList-1.0.dtd&#34;&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;plist</span> <span style="color:#a6e22e">version=</span><span style="color:#e6db74">&#34;1.0&#34;</span><span style="color:#f92672">&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;dict&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;key&gt;</span>Label<span style="color:#f92672">&lt;/key&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;string&gt;</span>com.custom.synch.external.ssd<span style="color:#f92672">&lt;/string&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;key&gt;</span>LowPriority<span style="color:#f92672">&lt;/key&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;true/&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;key&gt;</span>StandardOutPath<span style="color:#f92672">&lt;/key&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;string&gt;</span>/tmp/com.custom.synch.external.stdout<span style="color:#f92672">&lt;/string&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;key&gt;</span>StandardErrorPath<span style="color:#f92672">&lt;/key&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;string&gt;</span>/tmp/com.custom.synch.external.stderr<span style="color:#f92672">&lt;/string&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;key&gt;</span>WorkingDirectory<span style="color:#f92672">&lt;/key&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;string&gt;</span>/Users/username/Documents<span style="color:#f92672">&lt;/string&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;key&gt;</span>ProgramArguments<span style="color:#f92672">&lt;/key&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;array&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;string&gt;</span>osascript<span style="color:#f92672">&lt;/string&gt;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;stirng&gt;</span>/Library/Scripts/Custom/external-volume-synch.scpt<span style="color:#f92672">&lt;/string&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/array&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;key&gt;</span>StartOnMount<span style="color:#f92672">&lt;/key&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;true/&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/dict&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/plist&gt;</span>
-</span></span></code></pre></div><p>To load and enable the launchd use the <a href="x-man-page://launchctl"><code>launchctl</code></a>.</p>
-<pre tabindex="0"><code>launchctl load -w ~/Library/LaunchAgents/com.custom.sync.external.ssd.plist
-</code></pre><p>En voila, Plug in the target drive, check the logs and see if the files appear in the taget folder.</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+&lt;dict&gt;
+    &lt;key&gt;Label&lt;/key&gt;
+    &lt;string&gt;com.custom.synch.external.ssd&lt;/string&gt;
+    &lt;key&gt;LowPriority&lt;/key&gt;
+    &lt;true/&gt;
+    &lt;key&gt;StandardOutPath&lt;/key&gt;
+    &lt;string&gt;/tmp/com.custom.synch.external.stdout&lt;/string&gt;
+    &lt;key&gt;StandardErrorPath&lt;/key&gt;
+    &lt;string&gt;/tmp/com.custom.synch.external.stderr&lt;/string&gt;
+    &lt;key&gt;WorkingDirectory&lt;/key&gt;
+    &lt;string&gt;/Users/username/Documents&lt;/string&gt;
+    &lt;key&gt;ProgramArguments&lt;/key&gt;
+    &lt;array&gt;
+        &lt;string&gt;osascript&lt;/string&gt;
+        &lt;stirng&gt;/Library/Scripts/Custom/external-volume-synch.scpt&lt;/string&gt;
+    &lt;/array&gt;
+    &lt;key&gt;StartOnMount&lt;/key&gt;
+    &lt;true/&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</code></pre>
+<p>To load and enable the launchd use the <a href="x-man-page://launchctl"><code>launchctl</code></a>.</p>
+<pre><code>launchctl load -w ~/Library/LaunchAgents/com.custom.sync.external.ssd.plist
+</code></pre>
+<p>En voila, Plug in the target drive, check the logs and see if the files appear in the taget folder.</p>
 <hr>
 <h2 id="side-notes">Side Notes</h2>
 <p><strong>Frist:</strong> Although <a href="x-man-page://cron"><code>cron</code></a> is simple and extensivly used it is deprecated on OS X in flavor of <code>launchd</code> (<a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/ScheduledJobs.html">Link</a>).</p>

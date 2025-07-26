@@ -20,14 +20,14 @@
       <link>https://schafsam.github.io/posts/2024-09-03-azure-function-and-secrets/</link>
       <pubDate>Tue, 03 Sep 2024 00:00:00 +0000</pubDate>
       <guid>https://schafsam.github.io/posts/2024-09-03-azure-function-and-secrets/</guid>
-      <description>Get the Secrets To retrieve the secrets from Azure Key Vault there are two ways. First, by using the azure-keyvault package and second via environment variables.&#xA;Package Add the azure-keyvault and azure-identity package to your Azure Functions App.&#xA;pip install azure-identity pip install azure-keyvault Within the function use this code&#xA;from azure.identity import DefaultAzureCredential from azure.keyvault.secrets import SecretClient credential = DefaultAzureCredential() client = SecretClient(vault_url=&amp;#34;https://&amp;lt;vaultname&amp;gt;.vault.azure.net&amp;#34;, credential=credential) secret = client.get_secret(&amp;#34;&amp;lt;secret-name&amp;gt;&amp;#34;) print(secret.name) print(secret.value) Further infos for the Key vault sdk check out Link.</description>
+      <description>Get the Secrets To retrieve the secrets from Azure Key Vault there are two ways. First, by using the azure-keyvault package and second via environment variables.&#xA;Package Add the azure-keyvault and azure-identity package to your Azure Functions App.&#xA;pip install azure-identity pip install azure-keyvault Within the function use this code&#xA;from azure.identity import DefaultAzureCredential from azure.keyvault.secrets import SecretClient credential = DefaultAzureCredential() client = SecretClient(vault_url=&amp;quot;https://&amp;lt;vaultname&amp;gt;.vault.azure.net&amp;quot;, credential=credential) secret = client.get_secret(&amp;quot;&amp;lt;secret-name&amp;gt;&amp;quot;) print(secret.name) print(secret.value) Further infos for the Key vault sdk check out Link.</description>
     </item>
     <item>
       <title>Global Information Tracker (git)</title>
       <link>https://schafsam.github.io/posts/git-version-control/</link>
       <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
       <guid>https://schafsam.github.io/posts/git-version-control/</guid>
-      <description>The git commands I like to remember.&#xA;Forgott a Thing To change your last commit and add something or fix a typo in the commit messag, use --amend:&#xA;git commit -m &amp;#34;initial commit&amp;#34; git add the_file.txt git commit --amend You can now overwrite your previous commit and have just one clean commit.</description>
+      <description>The git commands I like to remember.&#xA;Forgott a Thing To change your last commit and add something or fix a typo in the commit messag, use --amend:&#xA;git commit -m &amp;quot;initial commit&amp;quot; git add the_file.txt git commit --amend You can now overwrite your previous commit and have just one clean commit.</description>
     </item>
     <item>
       <title>OData Syntax</title>
