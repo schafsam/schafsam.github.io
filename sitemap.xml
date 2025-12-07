@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://schafsam.github.io/posts/2025-12-12-command-line-hacker/</loc>
+    <lastmod>2025-12-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://schafsam.github.io/</loc>
-    <lastmod>2025-08-01T00:00:00+00:00</lastmod>
+    <lastmod>2025-12-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/posts/</loc>
-    <lastmod>2025-08-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://schafsam.github.io/2025-07-06-data-science-in-application/</loc>
-    <lastmod>2025-07-06T00:00:00+00:00</lastmod>
+    <lastmod>2025-12-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/posts/2024-12-22-auto-synch-to-external-disk/</loc>
     <lastmod>2024-12-22T00:00:00+00:00</lastmod>
@@ -37,6 +37,12 @@
   </url><url>
     <loc>https://schafsam.github.io/posts/mongodb-backend-engine/</loc>
     <lastmod>2023-04-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://schafsam.github.io/tags/python/</loc>
+    <lastmod>2020-02-06T21:00:57+07:00</lastmod>
+  </url><url>
+    <loc>https://schafsam.github.io/posts/2020-02-06-main-python/</loc>
+    <lastmod>2020-02-06T21:00:57+07:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/about/</loc>
     <lastmod>2016-05-05T21:48:51-07:00</lastmod>

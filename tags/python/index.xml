@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Sc Online</title>
+    <link>https://schafsam.github.io/tags/python/</link>
+    <description>Recent content in Python on Sc Online</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 06 Feb 2020 21:00:57 +0700</lastBuildDate>
+    <atom:link href="https://schafsam.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python Executable with Dunder Main</title>
+      <link>https://schafsam.github.io/posts/2020-02-06-main-python/</link>
+      <pubDate>Thu, 06 Feb 2020 21:00:57 +0700</pubDate>
+      <guid>https://schafsam.github.io/posts/2020-02-06-main-python/</guid>
+      <description>&lt;p&gt;With Python you can run a directory as an executable.&#xA;The &lt;code&gt;__main__.py&lt;/code&gt; file in &lt;code&gt;myprojectfolder&lt;/code&gt; serves as the entry point for your program.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;myprojectfolder/&#xA;    |_ __main__.py&#xA;    |_ __init__.py&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;With &lt;code&gt;__main__.py&lt;/code&gt; being:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&amp;quot;Hello&amp;quot;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;So you can call the directory like this:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;python myprojectfolder&#xA;Hello&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;This functionality works not only at the top-level directory but also in submodules.&#xA;If your project has a subfolder with its own &lt;code&gt;__main__.py&lt;/code&gt;, you can access it by running &lt;code&gt;python myprojectfolder.subfolder&lt;/code&gt;, and Python will execute the code inside that file as the entry point,&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
