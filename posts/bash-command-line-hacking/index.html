@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.152.2">
+
+
+<title>Bash Command Line Hacking - Sc Online</title>
+<meta property="og:title" content="Bash Command Line Hacking - Sc Online">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+<link rel="stylesheet" href="/css/custom.css">
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bash Command Line Hacking",
+  "image": "https://schafsam.github.io/",
+  "datePublished": "2025-12-01T00:00:00Z",
+  "dateModified": "2025-12-01T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Schafsam"
+  },
+  "mainEntityOfPage": { "@type": "WebPage" },
+   "publisher": {
+    "@type": "Organization",
+    "name":  null ,
+    "logo": {
+      "@type": "ImageObject",
+      "url": {"alt":"Logo","height":50,"url":"logo.png","width":50}
+    }
+  },
+  "description": "Your terminal experience and preferences might lead you to choose a different shell than Bash. Howerver, wheter it is Bash, Zsh, or another variant, they share commonalities that date back to the original Bourne shell sh.\nTo determine which shell is currently running on your system, try:\n\u0026gt; echo $SHELL Common shells are:\n/bin/sh Docs /bin/bash Docs /bin/zsh Docs The Bourne shell is the foundation and precursor to many modern command-line interfaces, making it still worth studying today. The following commands refer to Bash and use the shebang #!/bin/bash.\n",
+  "keywords": []
+}
+
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name":  null ,
+  "url": "https://schafsam.github.io/",
+  "sameAs": [
+    "https://github.com/schafsam"
+  ]
+}
+</script>
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/posts/">Blog</a></li>
+    
+    <li><a href="/resume/">Resume</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">Bash Command Line Hacking</h1>
+
+    
+
+    <div class="article-content">
+      
+      <p>Your terminal experience and preferences might lead you to choose a different shell than
+Bash.
+Howerver, wheter it is Bash, Zsh, or another variant, they share commonalities that date
+back to the original <a href="https://en.wikipedia.org/wiki/Bourne_shell">Bourne shell</a> <code>sh</code>.</p>
+<p>To determine which shell is currently running on your system, try:</p>
+<pre><code class="language-bash">&gt; echo $SHELL
+</code></pre>
+<p>Common shells are:</p>
+<ul>
+<li><code>/bin/sh</code> <a href="https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html">Docs</a></li>
+<li><code>/bin/bash</code> <a href="https://www.gnu.org/software/bash/manual/bash.html">Docs</a></li>
+<li><code>/bin/zsh</code> <a href="https://zsh.sourceforge.io/Doc/Release/zsh_toc.html">Docs</a></li>
+</ul>
+<p>The Bourne shell is the foundation and precursor to many modern command-line interfaces,
+making it still worth studying today. The following commands refer to <strong>Bash</strong> and use the
+shebang <code>#!/bin/bash</code>.</p>
+<h2 id="parameter-expansion">Parameter Expansion</h2>
+<p>String fromatting is a common task. To capitalize your stirng, make the first letter a capital letter.
+You can use the caret sign. Two caret signs make the string to all upper case.</p>
+<pre><code class="language-bash">&gt; echo ${USER^}      # caret symbol
+&gt; echo ${USER^^}     # caret symbol
+</code></pre>
+<p>Slicing is zero index based and also allows for reverse extraction.</p>
+<pre><code class="language-bash">&gt; echo ${USER: -3:2}
+</code></pre>
+<h2 id="command-substitution">Command Substitution</h2>
+<p>Command subsitution executes the for example the &lsquo;date&rsquo; command and captures its output as a string.</p>
+<pre><code class="language-bash">$(date)
+</code></pre>
+<p>In general, using <code>$()</code> is a convenient way to execute external commands within Bash scripts
+or interactive shells.</p>
+<h2 id="arithmetic-expansion"><a href="https://www.gnu.org/software/bash/manual/bash.html#Arithmetic-Expansion-1">Arithmetic Expansion</a></h2>
+<p>Use the command line as basic calcualtor.</p>
+<pre><code class="language-bash">&gt; x=4
+&gt; y=2
+&gt; echo $((x + y))    # &lt;- no need for $ signs
+</code></pre>
+<p>For arbitrary precission calculation use the basic
+calculator <code>bc</code>.</p>
+<pre><code class="language-bash">&gt; echo &quot;scale=2; 5/3&quot; | bc
+</code></pre>
+<h2 id="tilde-expansion">Tilde Expansion</h2>
+<p>The tilde expansion helps with navigating the working directories.</p>
+<pre><code class="language-bash">&gt; echo ~
+&gt; echo $HOME
+</code></pre>
+<p>To get the home directory of a specific user do this:</p>
+<pre><code class="language-bash">&gt; echo ~username
+</code></pre>
+<p>The <code>+</code> and <code>-</code> signs allow you to navigate between the current and previous working
+directories. The following two commands are the same.</p>
+<pre><code class="language-bash">&gt; echo $PWD $OLDPWD
+&gt; echo $~+ $~-
+</code></pre>
+<h2 id="brace-expansion"><a href="https://www.gnu.org/software/bash/manual/bash.html#Brace-Expansion-1">Brace Expansion</a></h2>
+<p>To generate strings which share a prefix or suffix you can use the brace expansion on a range list.
+This can be useful for files and folder creation.</p>
+<pre><code class="language-bash">&gt; echo {1..10}
+1 2 3 4 5 6 7 8 9 10
+&gt; echo {1..10..2}    # step size of two
+1 3 5 7 9
+&gt; echo month{1..10..2}
+month1 month3 month5 month7 month9
+</code></pre>
+<h2 id="quoting"><a href="https://www.gnu.org/software/bash/manual/bash.html#Quoting-1">Quoting</a></h2>
+<p>If you want to use a reserved character like &lsquo;&amp;&rsquo; you must use one of these escape or quote options.</p>
+<ul>
+<li><code>\</code> gets the literal value of the next character</li>
+<li><code>''</code> single quotes take the text as raw (note: changed from &ldquo;singel&rdquo; to &ldquo;single&rdquo;).</li>
+<li><code>&quot;&quot;</code> double quotes keeps the literal meaning, but allows <code>$</code>, `` (backtick), and <code>\</code> to be</li>
+</ul>
+<p>For example, escape the ampersand for background jobs with a backslash.</p>
+<pre><code class="language-bash">&gt; echo John &amp; Johnna    # without escaping
+&gt; echo John \&amp; Johnna   # with escaping using a backslash
+</code></pre>
+<p>Use the backslash to get a literal backslash.</p>
+<pre><code class="language-bash">&gt; echo &quot;C:\Users\\$USER\Documents&quot;
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/python.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

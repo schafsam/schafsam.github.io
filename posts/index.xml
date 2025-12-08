@@ -9,10 +9,10 @@
     <lastBuildDate>Mon, 01 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://schafsam.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Command Line Hacker on Bash</title>
-      <link>https://schafsam.github.io/posts/2025-12-12-command-line-hacker/</link>
+      <title>Bash Command Line Hacking</title>
+      <link>https://schafsam.github.io/posts/bash-command-line-hacking/</link>
       <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>https://schafsam.github.io/posts/2025-12-12-command-line-hacker/</guid>
+      <guid>https://schafsam.github.io/posts/bash-command-line-hacking/</guid>
       <description>&lt;p&gt;Your terminal experience and preferences might lead you to choose a different shell than&#xA;Bash.&#xA;Howerver, wheter it is Bash, Zsh, or another variant, they share commonalities that date&#xA;back to the original &lt;a href=&#34;https://en.wikipedia.org/wiki/Bourne_shell&#34;&gt;Bourne shell&lt;/a&gt; &lt;code&gt;sh&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;To determine which shell is currently running on your system, try:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; echo $SHELL&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Common shells are:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;/bin/sh&lt;/code&gt; &lt;a href=&#34;https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html&#34;&gt;Docs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;/bin/bash&lt;/code&gt; &lt;a href=&#34;https://www.gnu.org/software/bash/manual/bash.html&#34;&gt;Docs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;/bin/zsh&lt;/code&gt; &lt;a href=&#34;https://zsh.sourceforge.io/Doc/Release/zsh_toc.html&#34;&gt;Docs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The Bourne shell is the foundation and precursor to many modern command-line interfaces,&#xA;making it still worth studying today. The following commands refer to &lt;strong&gt;Bash&lt;/strong&gt; and use the&#xA;shebang &lt;code&gt;#!/bin/bash&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
     <item>
