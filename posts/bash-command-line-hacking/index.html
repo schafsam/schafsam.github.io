@@ -52,7 +52,7 @@
       "url": {"alt":"Logo","height":50,"url":"logo.png","width":50}
     }
   },
-  "description": "Your terminal experience and preferences might lead you to choose a different shell than Bash. Howerver, wheter it is Bash, Zsh, or another variant, they share commonalities that date back to the original Bourne shell sh.\nTo determine which shell is currently running on your system, try:\n\u0026gt; echo $SHELL Common shells are:\n/bin/sh Docs /bin/bash Docs /bin/zsh Docs The Bourne shell is the foundation and precursor to many modern command-line interfaces, making it still worth studying today. The following commands refer to Bash and use the shebang #!/bin/bash.\n",
+  "description": "Your terminal experience and preferences might lead you to choose a different shell than Bash. However, wheter it is Bash, Zsh, or another variant, they share commonalities that date back to the original Bourne shell sh.\nTo determine which shell is currently running on your system, try:\n\u0026gt; echo $SHELL Common shells are:\n/bin/sh Docs /bin/bash Docs /bin/zsh Docs The Bourne shell is the foundation and precursor to many modern command-line interfaces, making it still worth studying today. The following commands refer to Bash and use the shebang #!/bin/bash.\n",
   "keywords": []
 }
 
@@ -110,7 +110,7 @@
       
       <p>Your terminal experience and preferences might lead you to choose a different shell than
 Bash.
-Howerver, wheter it is Bash, Zsh, or another variant, they share commonalities that date
+However, wheter it is Bash, Zsh, or another variant, they share commonalities that date
 back to the original <a href="https://en.wikipedia.org/wiki/Bourne_shell">Bourne shell</a> <code>sh</code>.</p>
 <p>To determine which shell is currently running on your system, try:</p>
 <pre><code class="language-bash">&gt; echo $SHELL
@@ -123,7 +123,12 @@ back to the original <a href="https://en.wikipedia.org/wiki/Bourne_shell">Bourne
 </ul>
 <p>The Bourne shell is the foundation and precursor to many modern command-line interfaces,
 making it still worth studying today. The following commands refer to <strong>Bash</strong> and use the
-shebang <code>#!/bin/bash</code>.</p>
+<a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a> <code>#!/bin/bash</code>.</p>
+<p>Alternatively the shebang allows you to pass one argument after the interpreter.
+#! interpreter [optional-one-arg-only]
+You can use the <code>/usr/bin/env</code> command in combination with <code>bash</code> or rather with another interpreted script.
+To change the shell options within your env or session you can use the
+<a href="https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html%3E"><code>set</code></a> command.</p>
 <h2 id="parameter-expansion">Parameter Expansion</h2>
 <p>String fromatting is a common task. To capitalize your stirng, make the first letter a capital letter.
 You can use the caret sign. Two caret signs make the string to all upper case.</p>
