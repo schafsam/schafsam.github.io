@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.152.2">
+
+
+<title>Get Secrets from Vault in an Azure Function - Sc Online</title>
+<meta property="og:title" content="Get Secrets from Vault in an Azure Function - Sc Online">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+<link rel="stylesheet" href="/css/custom.css">
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Get Secrets from Vault in an Azure Function",
+  "image": "https://schafsam.github.io/",
+  "datePublished": "2024-09-03T00:00:00Z",
+  "dateModified": "2024-09-03T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Schafsam"
+  },
+  "mainEntityOfPage": { "@type": "WebPage" },
+   "publisher": {
+    "@type": "Organization",
+    "name":  null ,
+    "logo": {
+      "@type": "ImageObject",
+      "url": {"alt":"Logo","height":50,"url":"logo.png","width":50}
+    }
+  },
+  "description": "Get the Secrets To retrieve the secrets from Azure Key Vault there are two ways. First, by using the azure-keyvault package and second via environment variables.\nPackage Add the azure-keyvault-secrets and azure-identity package to your Azure Functions App.\npip install azure-identity pip install azure-keyvault-secrets Within the function use this code\nfrom azure.identity import DefaultAzureCredential from azure.keyvault.secrets import SecretClient credential = DefaultAzureCredential() client = SecretClient(vault_url=\u0026quot;https://\u0026lt;vaultname\u0026gt;.vault.azure.net\u0026quot;, credential=credential) secret = client.get_secret(\u0026quot;\u0026lt;secret-name\u0026gt;\u0026quot;) print(secret.name) print(secret.value) Further infos for the Key vault sdk check out Link or Link 2025\n",
+  "keywords": []
+}
+
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name":  null ,
+  "url": "https://schafsam.github.io/",
+  "sameAs": [
+    "https://github.com/schafsam"
+  ]
+}
+</script>
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/posts/">Blog</a></li>
+    
+    <li><a href="/resume/">Resume</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">Get Secrets from Vault in an Azure Function</h1>
+
+    
+
+    <div class="article-content">
+      
+      <h2 id="get-the-secrets">Get the Secrets</h2>
+<p>To retrieve the secrets from Azure Key Vault there are two ways. First, by using the <code>azure-keyvault</code> package and second via environment variables.</p>
+<h3 id="package">Package</h3>
+<p>Add the <code>azure-keyvault-secrets</code> and <code>azure-identity</code> package to your Azure Functions App.</p>
+<pre><code>pip install azure-identity 
+pip install azure-keyvault-secrets
+</code></pre>
+<p>Within the function use this code</p>
+<pre><code class="language-python">from azure.identity import DefaultAzureCredential 
+from azure.keyvault.secrets import SecretClient 
+
+credential = DefaultAzureCredential() 
+
+client = SecretClient(vault_url=&quot;https://&lt;vaultname&gt;.vault.azure.net&quot;,
+credential=credential) 
+
+secret = client.get_secret(&quot;&lt;secret-name&gt;&quot;)
+print(secret.name)
+print(secret.value)
+</code></pre>
+<p>Further infos for the Key vault sdk check out <a href="https://learn.microsoft.com/en-us/python/api/overview/azure/keyvault-secrets-readme?view=azure-python#retrieve-a-secret">Link</a> or <a href="https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python?tabs=azure-cli">Link 2025</a></p>
+<p>One advatage this approach has over the direct injection into environments variable is that you can update the secret at run time. This by simply refetch the infromation from the vault. Because every time you call the &lsquo;get_secret&rsquo; you get the current version from the vault.</p>
+<h3 id="store-secrets-as-environment-variables">Store Secrets as Environment Variables</h3>
+<p>Alternatively, you can store secrets as environment variables in your Azure Functions App. This is done via the app settings (<a href="https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references?tabs=azure-cli">Link</a>). To do this,</p>
+<ol>
+<li>Go to the Azure Functions App in the Azure Portal, and go to <em>Settings</em> &gt; <em>Configurations</em>.</li>
+<li>Then click on the “New application setting” button.</li>
+<li>Enter the name of the environment variable and for the value secret identifier you copied before. Use below syntax for the value,</li>
+</ol>
+<pre><code>@Microsoft.KeyVault(SecretUri=&lt;copied-value&gt;)
+</code></pre>
+<p>Alternatively</p>
+<pre><code>@Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret)
+</code></pre>
+<h3 id="use-manged-identities">Use Manged Identities</h3>
+<p>Applications can use managed identiteis to obtain Microsoft Entra ID tokesn witout having to  manage any credentials.</p>
+<p>Managed identities provides automatically a managed identity in Microsoft Entra ID for applications to use when connecting to resources that support Microsoft Entra authentication.</p>
+<ul>
+<li><em>System-Assigned Managed Identity:</em> is enabled directly on an Azure service instance.</li>
+<li><em>User-Assigned Managed Identity:</em> is a standalone Azure resource and can be assigned to more than one Azuzure Serivce instance.</li>
+</ul>
+<p><img src="azure-managed-identity.svg" alt="image"></p>
+<p><a href="https://dynamics-chronicles.com/article/managed-identities-azure-dataverse">https://dynamics-chronicles.com/article/managed-identities-azure-dataverse</a></p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/python.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

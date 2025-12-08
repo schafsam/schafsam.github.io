@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.152.2">
+
+
+<title>OData Syntax - Sc Online</title>
+<meta property="og:title" content="OData Syntax - Sc Online">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+<link rel="stylesheet" href="/css/custom.css">
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OData Syntax",
+  "image": "https://schafsam.github.io/",
+  "datePublished": "2024-02-03T00:00:00Z",
+  "dateModified": "2024-02-03T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Schafsam"
+  },
+  "mainEntityOfPage": { "@type": "WebPage" },
+   "publisher": {
+    "@type": "Organization",
+    "name":  null ,
+    "logo": {
+      "@type": "ImageObject",
+      "url": {"alt":"Logo","height":50,"url":"logo.png","width":50}
+    }
+  },
+  "description": "Microsoft\u0026rsquo; data service commonly provide RESTful interfaces that utilize OData syntax.\nFilter Rows Beside the option to retrieve all records beloning to a entity you have the ability to specify additional filter criteria for your query. The filter employs various syntax and operators, including acronyms such as eq for equal and gt for greater than, among others.\nSymbol Operator Example eq = $filter=size eq 100 ne != $filter=size ne 200 gt \u0026gt; $filter=size gt 50 ge \u0026gt;= $filter=size ge 100 lt \u0026lt; $filter=size lt 300 le \u0026lt;= $filter=size le 125 and \u0026amp; $filter=size gt 100 and size lt 200 or | $filter=size lt 10 or size gt 400 not ! $filter=not size eq 100 () precedence $filter=(size eq 100) or (...) The query response has the following schema.\n",
+  "keywords": ["MS Dynamics 365"]
+}
+
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name":  null ,
+  "url": "https://schafsam.github.io/",
+  "sameAs": [
+    "https://github.com/schafsam"
+  ]
+}
+</script>
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/posts/">Blog</a></li>
+    
+    <li><a href="/resume/">Resume</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">OData Syntax</h1>
+
+    
+
+    <div class="article-content">
+      
+      <p>Microsoft&rsquo; data service commonly provide RESTful interfaces that utilize <a href="https://www.odata.org/getting-started/basic-tutorial/">OData syntax</a>.</p>
+<h2 id="filter-rows">Filter Rows</h2>
+<p>Beside the option to retrieve all records beloning to a entity you have the ability to specify additional <code>filter</code> criteria for your query. The filter employs various syntax and operators, including acronyms such as <strong><code>eq</code></strong> for equal and <strong><code>gt</code></strong> for greater than, among others.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Symbol</th>
+          <th style="text-align: left">Operator</th>
+          <th style="text-align: left">Example</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">eq</td>
+          <td style="text-align: left">=</td>
+          <td style="text-align: left"><code>$filter=size eq 100</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ne</td>
+          <td style="text-align: left">!=</td>
+          <td style="text-align: left"><code>$filter=size ne 200</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">gt</td>
+          <td style="text-align: left">&gt;</td>
+          <td style="text-align: left"><code>$filter=size gt 50</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ge</td>
+          <td style="text-align: left">&gt;=</td>
+          <td style="text-align: left"><code>$filter=size ge 100</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">lt</td>
+          <td style="text-align: left">&lt;</td>
+          <td style="text-align: left"><code>$filter=size lt 300</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">le</td>
+          <td style="text-align: left">&lt;=</td>
+          <td style="text-align: left"><code>$filter=size le 125</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">and</td>
+          <td style="text-align: left">&amp;</td>
+          <td style="text-align: left"><code>$filter=size gt 100 and size lt 200</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">or</td>
+          <td style="text-align: left">|</td>
+          <td style="text-align: left"><code>$filter=size lt 10 or size gt 400</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">not</td>
+          <td style="text-align: left">!</td>
+          <td style="text-align: left"><code>$filter=not size eq 100</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">()</td>
+          <td style="text-align: left"><em>precedence</em></td>
+          <td style="text-align: left"><code>$filter=(size eq 100) or (...)</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>The query response has the following schema.</p>
+<pre><code class="language-bash">{
+  odata.metadata: &quot;http://.../$metadata&quot;,
+  value:
+    [
+      {
+        name: &quot;Crocodile&quot;,
+        url: &quot;https://en.wikipedia.org/wiki/Crocodile&quot;
+      },
+      {
+        name: &quot;Alligator&quot;,
+        url: &quot;https://en.wikipedia.org/wiki/American_alligator&quot;
+      }
+    ]
+}
+</code></pre>
+<h2 id="limit-rows">Limit rows</h2>
+<p>The <code>top</code> command lets you limit the number of records your query will return.</p>
+<pre><code>/accounts?$top=10
+</code></pre>
+<h2 id="joining-tables">Joining Tables</h2>
+<p>The way to join tables in Odata is to make use of the <code>expand</code> command which will return a nested document with the related items. For example to looks up all acounts and joins them with their addresses use the follwing query:</p>
+<pre><code>crm.dynamics.com/api/data/v9.2/acoutns?$select=name&amp;$expand=Account_CustomerAddrss
+</code></pre>
+<p>The <code>expand</code> command takes a relationship to resolve the link between the tables. To know what name the relationship has you can do the following.</p>
+<p>On the address table go to relationshpas and search for the name of the relationship to your source table.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Display name</th>
+          <th style="text-align: left">Name</th>
+          <th style="text-align: left">Related table</th>
+          <th style="text-align: left">Relationship type</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Parent</td>
+          <td style="text-align: left">Account_CustomerAddress</td>
+          <td style="text-align: left">Account</td>
+          <td style="text-align: left">Many-to-one</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="multiple-joins">Multiple Joins</h3>
+<p>A common way to join multiple lookups at the same time it is possible to state the tables with a comma separated.</p>
+<pre><code>...contacts(1939100)/?$expand=firstTable,secondTable
+</code></pre>
+<h2 id="update-records-with-lookup">Update Records with Lookup</h2>
+<p>Records are connected to each other through <em>relationships</em>, with a foreign key set on one side of the relationship. In the context of OData, this is called binding.
+<a href="https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/associate-disassociate-entities-using-web-api">Assosiate with a single-valued naviagtion property</a>.</p>
+<pre><code>{
+  &quot;parentcustomerid_account@odata.bind&quot;: &quot;/accounts&quot;
+}
+</code></pre>
+<p>An example from Microsoft Dynamics 365 Web API to set the field Regarding.</p>
+<pre><code>{
+  &quot;regardingobjectid_account@odata.bind&quot;: &quot;/accounts(a8d8cf490-...-6405bd2b29d8)&quot;
+}
+</code></pre>
+<p>Send this data as a POST request will set the field <code>_regardingobejctid_value</code> with the according GUID.</p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/python.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

@@ -6,13 +6,48 @@
     <description>Recent content in Categories on Sc Online</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://schafsam.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Terminal</title>
+      <link>https://schafsam.github.io/categories/terminal/</link>
+      <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://schafsam.github.io/categories/terminal/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DevOps</title>
+      <link>https://schafsam.github.io/categories/devops/</link>
+      <pubDate>Tue, 03 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://schafsam.github.io/categories/devops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Git</title>
+      <link>https://schafsam.github.io/categories/git/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://schafsam.github.io/categories/git/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Data</title>
       <link>https://schafsam.github.io/categories/data/</link>
       <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
       <guid>https://schafsam.github.io/categories/data/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OData</title>
+      <link>https://schafsam.github.io/categories/odata/</link>
+      <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://schafsam.github.io/categories/odata/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://schafsam.github.io/categories/python/</link>
+      <pubDate>Thu, 06 Feb 2020 21:00:57 +0700</pubDate>
+      <guid>https://schafsam.github.io/categories/python/</guid>
       <description></description>
     </item>
   </channel>

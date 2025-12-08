@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.152.2">
+
+
+<title>Synchronize Data to External Disk - Sc Online</title>
+<meta property="og:title" content="Synchronize Data to External Disk - Sc Online">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+<link rel="stylesheet" href="/css/custom.css">
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Synchronize Data to External Disk",
+  "image": "https://schafsam.github.io/",
+  "datePublished": "2024-12-22T00:00:00Z",
+  "dateModified": "2024-12-22T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Schafsam"
+  },
+  "mainEntityOfPage": { "@type": "WebPage" },
+   "publisher": {
+    "@type": "Organization",
+    "name":  null ,
+    "logo": {
+      "@type": "ImageObject",
+      "url": {"alt":"Logo","height":50,"url":"logo.png","width":50}
+    }
+  },
+  "description": "The internet is full of usefull information that is accessable from everywhere. Unfortunately some information is only available for a certain period of time. For instance, while you can stream real-time tick data from stock markets, accessing historical data may only provide per-minute aggregates. Similarly, request for proposals (RFPs) are typically only available for a set period of time before they are taken down from the web. This makes all sense because storage is not for free and the amount of data would grow over the top.\n",
+  "keywords": []
+}
+
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name":  null ,
+  "url": "https://schafsam.github.io/",
+  "sameAs": [
+    "https://github.com/schafsam"
+  ]
+}
+</script>
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/posts/">Blog</a></li>
+    
+    <li><a href="/resume/">Resume</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">Synchronize Data to External Disk</h1>
+
+    
+
+    <div class="article-content">
+      
+      <p>The internet is full of usefull information that is accessable from everywhere.
+Unfortunately some information is only available for a certain period of time.
+For instance, while you can stream real-time tick data from stock markets, accessing historical data may only provide per-minute aggregates.
+Similarly, request for proposals (RFPs) are typically only available for a set period of time before they are taken down from the web.
+This makes all sense because storage is not for free and the amount of data would grow over the top.</p>
+<p>This time constrain brings me often to the situation that I start to collect data periodically.
+I collect the data on my laptop and would like to backup it to an external drive.
+For an efficent fetching procedure it is crucial to keep the recent data at hand on my laptop for comparison.
+While analysis or aggregations are performed on the mounted external ssd. My disk has a decent read and write capability (2000 MB/s).</p>
+<h2 id="storyline">Storyline</h2>
+<p>So every time the drive is connected to the laptop some kind of Time Machine routine should start and move all the recent data points to the external drive.
+Since I work with a MacBook this seems to be best possible with a <a href="x-man-page://launchd"><code>launchd</code></a> job. <code>crontab</code> does not seem to be the way ahead.</p>
+<h2 id="faild-attempt-with-bash">Faild Attempt with Bash</h2>
+<p>Instead of using the AppleScript as describe next I first tried to start from launchd a bash script. The downfall were the file permission and giveing bash &ldquo;Full Disk Access&rdquo; was not a prefered option. Therefore, I switch to use AppleScript.</p>
+<pre><code>&lt;key&gt;Program&lt;/key&gt;
+&lt;string&gt;/Users/username/Scripts/external-volume-synch.sh&lt;/string&gt;
+</code></pre>
+<h2 id="applescript-to-run-rsync">AppleScript to Run rsync</h2>
+<p>The actual solution consists of an AppleScript that checks if the target disk <code>RemovableDiskName</code> is mounted and uses <a href="x-man-page://rsync"><code>rsync</code></a> with the archive mode to do the data sync.</p>
+<pre><code class="language-osascript">set RemovableDiskName to &quot;Extreme Pro&quot;
+tell application &quot;System Events&quot; to set MountedDisks to name of every disk
+if RemovableDiskName is in MountedDisks then
+    try
+        do shell script &quot;rsync -au '/Source/Path' '/Destination/Path'&quot;
+        delay 1
+    on error  e
+        display dialog &quot;An error occured: &quot; &amp; e
+    end try
+end if
+</code></pre>
+<h2 id="the-launchagent">The LaunchAgent</h2>
+<p>An <strong>agent</strong> is a process that runs on behalf of a user in the background. Contrary to daemons who run as part of the system. The agent description below contains the key <code>startOnMount</code> set to <code>true</code>. This will envoke the AppleScript when ever a disk is mounted.</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+&lt;dict&gt;
+    &lt;key&gt;Label&lt;/key&gt;
+    &lt;string&gt;com.custom.synch.external.ssd&lt;/string&gt;
+    &lt;key&gt;LowPriority&lt;/key&gt;
+    &lt;true/&gt;
+    &lt;key&gt;StandardOutPath&lt;/key&gt;
+    &lt;string&gt;/tmp/com.custom.synch.external.stdout&lt;/string&gt;
+    &lt;key&gt;StandardErrorPath&lt;/key&gt;
+    &lt;string&gt;/tmp/com.custom.synch.external.stderr&lt;/string&gt;
+    &lt;key&gt;WorkingDirectory&lt;/key&gt;
+    &lt;string&gt;/Users/username/Documents&lt;/string&gt;
+    &lt;key&gt;ProgramArguments&lt;/key&gt;
+    &lt;array&gt;
+        &lt;string&gt;osascript&lt;/string&gt;
+        &lt;stirng&gt;/Library/Scripts/Custom/external-volume-synch.scpt&lt;/string&gt;
+    &lt;/array&gt;
+    &lt;key&gt;StartOnMount&lt;/key&gt;
+    &lt;true/&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</code></pre>
+<p>To load and enable the launchd use the <a href="x-man-page://launchctl"><code>launchctl</code></a>.</p>
+<pre><code>launchctl load -w ~/Library/LaunchAgents/com.custom.sync.external.ssd.plist
+</code></pre>
+<p>En voila, Plug in the target drive, check the logs and see if the files appear in the taget folder.</p>
+<hr>
+<h2 id="side-notes">Side Notes</h2>
+<p><strong>Frist:</strong> Although <a href="x-man-page://cron"><code>cron</code></a> is simple and extensivly used it is deprecated on OS X in flavor of <code>launchd</code> (<a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/ScheduledJobs.html">Link</a>).</p>
+<p><strong>Second:</strong> For inspiration is the plist of Time Machine <code>/System/Library/LaunchDaemons/com.apple.backupd-helper.plist</code>. Altough the <code>StartOnMount</code> key is turned off and the helpers is listening to other <code>LaunchEvents</code>. This is some thing for a future deep dive.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://developer.apple.com/library/archive/technotes/tn2083/_index.html">Deamon and Agents for Apple</a></li>
+<li><a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html">Creating Launch Deamons and Agents</a></li>
+<li><a href="https://medium.com/@chetcorcos/a-simple-launchd-tutorial-9fecfcf2dbb3">Simple launchd Tutorial</a></li>
+<li><a href="https://macresearch.org/tutorial-backups-with-launchd/">Backups with Launchd for Mac</a></li>
+<li><a href="https://support.apple.com/en-gb/guide/terminal/apdc6c1077b-5d5d-4d35-9c19-60f2397b2369/mac">Script management with launchd in Terminal on Mac</a>.</li>
+</ul>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/python.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

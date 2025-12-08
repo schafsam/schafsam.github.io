@@ -5,23 +5,32 @@
     <loc>https://schafsam.github.io/posts/bash-command-line-hacking/</loc>
     <lastmod>2025-12-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://schafsam.github.io/categories/</loc>
+    <lastmod>2025-12-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://schafsam.github.io/</loc>
     <lastmod>2025-12-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/posts/</loc>
     <lastmod>2025-12-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://schafsam.github.io/posts/2024-12-22-auto-synch-to-external-disk/</loc>
+    <loc>https://schafsam.github.io/categories/terminal/</loc>
+    <lastmod>2025-12-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://schafsam.github.io/posts/synchronize-data-to-external-disk/</loc>
     <lastmod>2024-12-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://schafsam.github.io/posts/2024-09-03-azure-function-and-secrets/</loc>
+    <loc>https://schafsam.github.io/categories/devops/</loc>
     <lastmod>2024-09-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://schafsam.github.io/posts/azure-function-and-secrets/</loc>
+    <lastmod>2024-09-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://schafsam.github.io/categories/git/</loc>
+    <lastmod>2024-07-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/posts/git-version-control/</loc>
     <lastmod>2024-07-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://schafsam.github.io/categories/</loc>
-    <lastmod>2024-02-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/categories/data/</loc>
     <lastmod>2024-02-03T00:00:00+00:00</lastmod>
@@ -29,7 +38,10 @@
     <loc>https://schafsam.github.io/tags/ms-dynamics-365/</loc>
     <lastmod>2024-02-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://schafsam.github.io/posts/2024-02-03-odata-syntax/</loc>
+    <loc>https://schafsam.github.io/categories/odata/</loc>
+    <lastmod>2024-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://schafsam.github.io/posts/odata-syntax/</loc>
     <lastmod>2024-02-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/tags/</loc>
@@ -38,10 +50,10 @@
     <loc>https://schafsam.github.io/posts/mongodb-backend-engine/</loc>
     <lastmod>2023-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://schafsam.github.io/tags/python/</loc>
+    <loc>https://schafsam.github.io/categories/python/</loc>
     <lastmod>2020-02-06T21:00:57+07:00</lastmod>
   </url><url>
-    <loc>https://schafsam.github.io/posts/2020-02-06-main-python/</loc>
+    <loc>https://schafsam.github.io/posts/python-executable/</loc>
     <lastmod>2020-02-06T21:00:57+07:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/about/</loc>

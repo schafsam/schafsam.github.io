@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DevOps on Sc Online</title>
+    <link>https://schafsam.github.io/categories/devops/</link>
+    <description>Recent content in DevOps on Sc Online</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 03 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://schafsam.github.io/categories/devops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Get Secrets from Vault in an Azure Function</title>
+      <link>https://schafsam.github.io/posts/azure-function-and-secrets/</link>
+      <pubDate>Tue, 03 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://schafsam.github.io/posts/azure-function-and-secrets/</guid>
+      <description>&lt;h2 id=&#34;get-the-secrets&#34;&gt;Get the Secrets&lt;/h2&gt;&#xA;&lt;p&gt;To retrieve the secrets from Azure Key Vault there are two ways. First, by using the &lt;code&gt;azure-keyvault&lt;/code&gt; package and second via environment variables.&lt;/p&gt;&#xA;&lt;h3 id=&#34;package&#34;&gt;Package&lt;/h3&gt;&#xA;&lt;p&gt;Add the &lt;code&gt;azure-keyvault-secrets&lt;/code&gt; and &lt;code&gt;azure-identity&lt;/code&gt; package to your Azure Functions App.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;pip install azure-identity &#xA;pip install azure-keyvault-secrets&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Within the function use this code&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from azure.identity import DefaultAzureCredential &#xA;from azure.keyvault.secrets import SecretClient &#xA;&#xA;credential = DefaultAzureCredential() &#xA;&#xA;client = SecretClient(vault_url=&amp;quot;https://&amp;lt;vaultname&amp;gt;.vault.azure.net&amp;quot;,&#xA;credential=credential) &#xA;&#xA;secret = client.get_secret(&amp;quot;&amp;lt;secret-name&amp;gt;&amp;quot;)&#xA;print(secret.name)&#xA;print(secret.value)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Further infos for the Key vault sdk check out &lt;a href=&#34;https://learn.microsoft.com/en-us/python/api/overview/azure/keyvault-secrets-readme?view=azure-python#retrieve-a-secret&#34;&gt;Link&lt;/a&gt; or &lt;a href=&#34;https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python?tabs=azure-cli&#34;&gt;Link 2025&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

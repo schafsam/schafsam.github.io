@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Sc Online</title>
+    <link>https://schafsam.github.io/categories/git/</link>
+    <description>Recent content in Git on Sc Online</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://schafsam.github.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Global Information Tracker (git)</title>
+      <link>https://schafsam.github.io/posts/git-version-control/</link>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://schafsam.github.io/posts/git-version-control/</guid>
+      <description>&lt;p&gt;The git commands I like to remember.&lt;/p&gt;&#xA;&lt;h2 id=&#34;forgott-a-thing&#34;&gt;Forgott a Thing&lt;/h2&gt;&#xA;&lt;p&gt;To change your last commit and add something or fix a typo in the commit messag, use &lt;code&gt;--amend&lt;/code&gt;:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;git commit -m &amp;quot;initial commit&amp;quot;&#xA;git add the_file.txt&#xA;git commit --amend&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;You can now overwrite your previous commit and have just one clean commit.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
