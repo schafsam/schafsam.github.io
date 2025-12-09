@@ -52,7 +52,7 @@
       "url": {"alt":"Logo","height":50,"url":"logo.png","width":50}
     }
   },
-  "description": "Get the Secrets To retrieve the secrets from Azure Key Vault there are two ways. First, by using the azure-keyvault package and second via environment variables.\nPackage Add the azure-keyvault-secrets and azure-identity package to your Azure Functions App.\npip install azure-identity pip install azure-keyvault-secrets Within the function use this code\nfrom azure.identity import DefaultAzureCredential from azure.keyvault.secrets import SecretClient credential = DefaultAzureCredential() client = SecretClient(vault_url=\u0026quot;https://\u0026lt;vaultname\u0026gt;.vault.azure.net\u0026quot;, credential=credential) secret = client.get_secret(\u0026quot;\u0026lt;secret-name\u0026gt;\u0026quot;) print(secret.name) print(secret.value) Further infos for the Key vault sdk check out Link or Link 2025\n",
+  "description": "Get the Secrets To retrieve the secrets from Azure Key Vault there are two ways. First, by using the azure-keyvault package and second via environment variables.\nUsing the dedicated packages allows you to retrieve an update secret during run time. The environment variables on the other hand are set when the application is launched and need a relaunch to updated.\nFrom the 12-Factor App perspective, secret management can be either a backing service or Configuration. Kubernetes treats secrets as configuration data, while using a Key Vault client follows the backing-service approach. An alternative is to delegate the secrete management to the cloud and use a Managed Identity in this case with Entra ID.\n",
   "keywords": []
 }
 
@@ -110,8 +110,11 @@
       
       <h2 id="get-the-secrets">Get the Secrets</h2>
 <p>To retrieve the secrets from Azure Key Vault there are two ways. First, by using the <code>azure-keyvault</code> package and second via environment variables.</p>
+<p>Using the dedicated packages allows you to retrieve an update secret during run time. The environment variables on the other hand are set when the application is launched and need a relaunch to updated.</p>
+<p>From the 12-Factor App perspective, secret management can be either a backing service or Configuration. Kubernetes treats secrets as configuration data, while using a Key Vault client follows the backing-service approach.
+An alternative is to delegate the secrete management to the cloud and use a <em>Managed Identity</em> in this case with Entra ID.</p>
 <h3 id="package">Package</h3>
-<p>Add the <code>azure-keyvault-secrets</code> and <code>azure-identity</code> package to your Azure Functions App.</p>
+<p>Add the <code>azure-keyvault-secrets</code> and <code>azure-identity</code> package to your Azure Functions App as requirements or dependencies.</p>
 <pre><code>pip install azure-identity 
 pip install azure-keyvault-secrets
 </code></pre>
@@ -129,7 +132,7 @@ print(secret.name)
 print(secret.value)
 </code></pre>
 <p>Further infos for the Key vault sdk check out <a href="https://learn.microsoft.com/en-us/python/api/overview/azure/keyvault-secrets-readme?view=azure-python#retrieve-a-secret">Link</a> or <a href="https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-python?tabs=azure-cli">Link 2025</a></p>
-<p>One advatage this approach has over the direct injection into environments variable is that you can update the secret at run time. This by simply refetch the infromation from the vault. Because every time you call the &lsquo;get_secret&rsquo; you get the current version from the vault.</p>
+<p>This approach has the advantage that the secrets get fetched every time the <code>get_secret</code> method is called. Which allows you to change secrets at running time.</p>
 <h3 id="store-secrets-as-environment-variables">Store Secrets as Environment Variables</h3>
 <p>Alternatively, you can store secrets as environment variables in your Azure Functions App. This is done via the app settings (<a href="https://learn.microsoft.com/en-us/azure/app-service/app-service-key-vault-references?tabs=azure-cli">Link</a>). To do this,</p>
 <ol>
@@ -149,7 +152,7 @@ print(secret.value)
 <li><em>System-Assigned Managed Identity:</em> is enabled directly on an Azure service instance.</li>
 <li><em>User-Assigned Managed Identity:</em> is a standalone Azure resource and can be assigned to more than one Azuzure Serivce instance.</li>
 </ul>
-<p><img src="azure-managed-identity.svg" alt="image"></p>
+<p><img src="/images/azure-managed-identity.svg" alt="image"></p>
 <p><a href="https://dynamics-chronicles.com/article/managed-identities-azure-dataverse">https://dynamics-chronicles.com/article/managed-identities-azure-dataverse</a></p>
 
     </div>
