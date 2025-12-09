@@ -6,8 +6,22 @@
     <description>Recent content in Tags on Sc Online</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Feb 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 03 Sep 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://schafsam.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Azure</title>
+      <link>https://schafsam.github.io/tags/azure/</link>
+      <pubDate>Tue, 03 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://schafsam.github.io/tags/azure/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://schafsam.github.io/tags/python/</link>
+      <pubDate>Tue, 03 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>https://schafsam.github.io/tags/python/</guid>
+      <description></description>
+    </item>
     <item>
       <title>MS Dynamics 365</title>
       <link>https://schafsam.github.io/tags/ms-dynamics-365/</link>

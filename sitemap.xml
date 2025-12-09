@@ -20,10 +20,19 @@
     <loc>https://schafsam.github.io/posts/synchronize-data-to-external-disk/</loc>
     <lastmod>2024-12-22T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://schafsam.github.io/tags/azure/</loc>
+    <lastmod>2024-09-03T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://schafsam.github.io/categories/devops/</loc>
     <lastmod>2024-09-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/posts/azure-function-and-secrets/</loc>
+    <lastmod>2024-09-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://schafsam.github.io/tags/python/</loc>
+    <lastmod>2024-09-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://schafsam.github.io/tags/</loc>
     <lastmod>2024-09-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/categories/git/</loc>
@@ -42,9 +51,6 @@
     <lastmod>2024-02-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/posts/odata-syntax/</loc>
-    <lastmod>2024-02-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://schafsam.github.io/tags/</loc>
     <lastmod>2024-02-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/posts/mongodb-backend-engine/</loc>
