@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.152.2">
+
+
+<title>Global Information Tracker (git) - Sc Online</title>
+<meta property="og:title" content="Global Information Tracker (git) - Sc Online">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+<link rel="stylesheet" href="/css/custom.css">
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Global Information Tracker (git)",
+  "image": "https://schafsam.github.io/",
+  "datePublished": "2024-07-01T00:00:00Z",
+  "dateModified": "2024-07-01T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Schafsam"
+  },
+  "mainEntityOfPage": { "@type": "WebPage" },
+   "publisher": {
+    "@type": "Organization",
+    "name":  null ,
+    "logo": {
+      "@type": "ImageObject",
+      "url": {"alt":"Logo","height":50,"url":"logo.png","width":50}
+    }
+  },
+  "description": "Git commands I like to remember.\nSelect Hunks Interactively With git add -p \u0026lt;file\u0026gt; for patch mode the file or files are not just added but you can choose which so called hunks of the changes should staged for commiting.\n... (1/1) Stage this hunk [y,n,q,a,d,s,e,p,?]? y accepts the hunk to be staged. n declines the hunk to be staged. s tries to split the hunk up into smaller pieces. a accepts the hunk and any remaining. d declines the hunk and any remaining. Forgott a Thing To change your last commit and add something or fix a typo in the commit messag, use --amend:\n",
+  "keywords": []
+}
+
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name":  null ,
+  "url": "https://schafsam.github.io/",
+  "sameAs": [
+    "https://github.com/schafsam"
+  ]
+}
+</script>
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/posts/">Blog</a></li>
+    
+    <li><a href="/resume/">Resume</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">Global Information Tracker (git)</h1>
+
+    
+
+    <div class="article-content">
+      
+      <p>Git commands I like to remember.</p>
+<h2 id="select-hunks-interactively">Select Hunks Interactively</h2>
+<p>With <code>git add -p &lt;file&gt;</code> for patch mode the file or files are not just added but you can choose which so called hunks of the changes should staged for commiting.</p>
+<pre><code class="language-bash">...
+(1/1) Stage this hunk [y,n,q,a,d,s,e,p,?]?
+</code></pre>
+<ul>
+<li>y accepts the hunk to be staged.</li>
+<li>n declines the hunk to be staged.</li>
+<li>s tries to split the hunk up into smaller pieces.</li>
+<li>a accepts the hunk and any remaining.</li>
+<li>d declines the hunk and any remaining.</li>
+</ul>
+<h2 id="forgott-a-thing">Forgott a Thing</h2>
+<p>To change your last commit and add something or fix a typo in the commit messag, use <code>--amend</code>:</p>
+<pre><code class="language-bash">git commit -m &quot;initial commit&quot;
+git add the_file.txt
+git commit --amend
+</code></pre>
+<p>You can now overwrite your previous commit and have just one clean commit.</p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/python.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+
