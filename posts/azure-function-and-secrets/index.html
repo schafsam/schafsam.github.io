@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.152.2">
+<meta name="generator" content="Hugo 0.158.0">
 
 
 <title>Get Secrets from Vault in an Azure Function - Sc Online</title>
@@ -119,7 +119,7 @@ An alternative is to delegate the secrete management to the cloud and use a <em>
 <pre><code class="language-bash">pip install azure-identity 
 pip install azure-keyvault-secrets
 </code></pre>
-<p>Within the function use this code</p>
+<p>Within the function use this code:</p>
 <pre><code class="language-python">from azure.identity import DefaultAzureCredential 
 from azure.keyvault.secrets import SecretClient 
 

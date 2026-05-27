@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on Sc Online</title>
-    <link>https://schafsam.github.io/tags/python/</link>
-    <description>Recent content in Python on Sc Online</description>
+    <title>SQLModel on Sc Online</title>
+    <link>https://schafsam.github.io/tags/sqlmodel/</link>
+    <description>Recent content in SQLModel on Sc Online</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 15 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://schafsam.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://schafsam.github.io/tags/sqlmodel/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Design Business App in Python</title>
       <link>https://schafsam.github.io/posts/design-python-business-apps/</link>
       <pubDate>Fri, 15 May 2026 00:00:00 +0000</pubDate>
       <guid>https://schafsam.github.io/posts/design-python-business-apps/</guid>
       <description>&lt;p&gt;When building applications with &lt;strong&gt;FastAPI&lt;/strong&gt; and &lt;strong&gt;SQLModel&lt;/strong&gt;, you have an efficient and modern stack in 2026. SQLModel combines SQLAlchemy (the ORM) and Pydantic (data validation) into a single tool.&lt;/p&gt;&#xA;&lt;p&gt;This combination changes how we think about traditional design patterns.&#xA;The following five software design patterns keep your business app maintainable and scalable.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-the-repository-pattern---with-a-modern-twist&#34;&gt;1. The Repository Pattern - with a modern twist&lt;/h2&gt;&#xA;&lt;p&gt;In traditional enterprise apps, the &lt;em&gt;Repository Pattern&lt;/em&gt; abstracts data access. Since SQLModel already acts as a powerful abstraction layer, a rigid repository pattern can introduce unnecessary boilerplate.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Get Secrets from Vault in an Azure Function</title>
-      <link>https://schafsam.github.io/posts/azure-function-and-secrets/</link>
-      <pubDate>Tue, 03 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>https://schafsam.github.io/posts/azure-function-and-secrets/</guid>
-      <description>&lt;p&gt;To retrieve secrets from Azure Key Vault there are two ways.&#xA;First, by using the &lt;code&gt;azure-keyvault&lt;/code&gt; package and second via environment variables.&lt;/p&gt;&#xA;&lt;p&gt;Using the dedicated packages allows you to retrieve an update secret during run time. The environment variables on the other hand are set when the application is launched and need a relaunch to updated.&lt;/p&gt;&#xA;&lt;p&gt;From the 12-Factor App perspective, secret management can be either a backing service or Configuration.&#xA;Kubernetes treats secrets as configuration data, while using a Key Vault client follows the backing-service approach.&#xA;An alternative is to delegate the secrete management to the cloud and use a &lt;em&gt;Managed Identity&lt;/em&gt; in this case with Entra ID.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

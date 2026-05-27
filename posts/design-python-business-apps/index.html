@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.158.0">
+
+
+<title>Design Business App in Python - Sc Online</title>
+<meta property="og:title" content="Design Business App in Python - Sc Online">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+<link rel="stylesheet" href="/css/custom.css">
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Design Business App in Python",
+  "image": "https://schafsam.github.io/",
+  "datePublished": "2026-05-15T00:00:00Z",
+  "dateModified": "2026-05-15T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Schafsam"
+  },
+  "mainEntityOfPage": { "@type": "WebPage" },
+   "publisher": {
+    "@type": "Organization",
+    "name":  null ,
+    "logo": {
+      "@type": "ImageObject",
+      "url": {"alt":"Logo","height":50,"url":"logo.png","width":50}
+    }
+  },
+  "description": "When building applications with FastAPI and SQLModel, you have an efficient and modern stack in 2026. SQLModel combines SQLAlchemy (the ORM) and Pydantic (data validation) into a single tool.\nThis combination changes how we think about traditional design patterns. The following five software design patterns keep your business app maintainable and scalable.\n1. The Repository Pattern - with a modern twist In traditional enterprise apps, the Repository Pattern abstracts data access. Since SQLModel already acts as a powerful abstraction layer, a rigid repository pattern can introduce unnecessary boilerplate.\n",
+  "keywords": ["SQLModel", "FastAPI", "Python"]
+}
+
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name":  null ,
+  "url": "https://schafsam.github.io/",
+  "sameAs": [
+    "https://github.com/schafsam"
+  ]
+}
+</script>
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/posts/">Blog</a></li>
+    
+    <li><a href="/resume/">Resume</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">Design Business App in Python</h1>
+
+    
+
+    <div class="article-content">
+      
+      <p>When building applications with <strong>FastAPI</strong> and <strong>SQLModel</strong>, you have an efficient and modern stack in 2026. SQLModel combines SQLAlchemy (the ORM) and Pydantic (data validation) into a single tool.</p>
+<p>This combination changes how we think about traditional design patterns.
+The following five software design patterns keep your business app maintainable and scalable.</p>
+<hr>
+<h2 id="1-the-repository-pattern---with-a-modern-twist">1. The Repository Pattern - with a modern twist</h2>
+<p>In traditional enterprise apps, the <em>Repository Pattern</em> abstracts data access. Since SQLModel already acts as a powerful abstraction layer, a rigid repository pattern can introduce unnecessary boilerplate.</p>
+<p>A <strong>Functional Repository</strong> or <strong>Service Layer</strong> pattern is the twist.
+Instead of creating massive classes for every entity, write clean reusable functions that handle database operations.</p>
+<p>Move your complex <code>select()</code>, <code>where()</code>, and <code>join()</code> logic out of the path operations and into dedicated <code>crud.py</code> or <code>services/</code> modules.</p>
+<p>It keeps your FastAPI route handlers (endpoints) thin and focused entirely on HTTP concerns (status codes, request parsing).</p>
+<pre><code class="language-Python"># crud/user.py
+from sqlmodel import Session, select
+from models import User
+
+def get_user_by_email(session: Session, email: str) -&gt; User | None:
+    statement = select(User).where(User.email == email)
+    return session.exec(statement).first()
+
+</code></pre>
+<hr>
+<h2 id="2-dependency-injection-pattern">2. Dependency Injection Pattern</h2>
+<p>FastAPI has a fabulous and built-in <em>Dependency Injection</em> system (<code>Depends</code>).
+Which is an asset for managing your database sessions.</p>
+<p>The <code>Depends</code> takes a yield-based generator function as input and injects it into your endpoints.</p>
+<p>It guarantees that database sessions are automatically
+opened when a request comes in and closed when the request finishes.</p>
+<p>It also makes unit testing easier because you can override dependencies with a mock database.</p>
+<pre><code class="language-python"># database.py
+from sqlmodel import Session, create_engine
+
+engine = create_engine(&quot;sqlite:///database.db&quot;)
+
+def get_session():
+    with Session(engine) as session:
+        yield session
+
+# api/routes.py
+@app.get(&quot;/users/{user_id}&quot;)
+def read_user(user_id: int, session: Session = Depends(get_session)):
+    # FastAPI automatically provides the session here
+    return get_user_by_id(session, user_id)
+
+</code></pre>
+<hr>
+<h2 id="3-data-transfer-object-pattern">3. Data Transfer Object Pattern</h2>
+<p>Because the models from SQLModel inherit from Pydantic, they are uniquely qualified to act as <a href="https://en.wikipedia.org/wiki/Data_transfer_object">data transfer objects (DTO)</a>.</p>
+<p>You should separate your database schemas from your API request/response schemas using <strong>SQLModel&rsquo;s multi-class approach</strong>.
+Use inheritance to create distinct flavors of your models.</p>
+<p>You rarely want to expose everything in your database to the frontend (like password hashes or internal IDs), nor do you want to require the frontend to send an <code>id</code> when creating a new resource.</p>
+<pre><code class="language-python"># models.py
+from sqlmodel import SQLModel, Field
+
+# Base properties shared across all flavors
+class UserBase(SQLModel):
+    email: str = Field(unique=True, index=True)
+    username: str
+
+# What the API expects when creating a user
+class UserCreate(UserBase):
+    password: str
+
+# What the API returns to the frontend (hides the password)
+class UserRead(UserBase):
+    id: int
+
+# The actual database table
+class User(UserBase, table=True):
+    id: int | None = Field(default=None, primary_key=True)
+    hashed_password: str
+
+</code></pre>
+<hr>
+<h2 id="4-routermodule-pattern">4. Router/Module Pattern</h2>
+<p>As your application gorws use FastAPI’s <code>APIRouter</code> to implement a modular design pattern.
+Organize your code so that the folder structure <strong>&ldquo;screams&rdquo;</strong> what the application does.</p>
+<p>Group the code by feature rather than by technical layer, keeps the codebase decoupled.
+It allows for multiple developers to work on different features (e.g., users, items, billing) without merge conflicts.</p>
+<pre><code class="language-text">app/
+├── main.py
+├── core/                  # Configuration, security, database setup
+│   ├── config.py
+│   └── database.py
+├── users/                 # Everything related to the 'Users' domain
+│   ├── router.py          # Endpoints
+│   ├── models.py          # SQLModel classes
+│   └── crud.py            # DB operations
+└── items/                 # Everything related to the 'Items' domain
+    ├── router.py
+    ├── models.py
+    └── crud.py
+
+</code></pre>
+<hr>
+<h2 id="5-unit-of-work-pattern">5. Unit of Work Pattern</h2>
+<p>The Unit of Work pattern maintains a list of objects affected by a business transaction and coordinates the writing out of changes.</p>
+<p>In SQLModel, the <code>Session</code> object <strong>is</strong> your Unit of Work.</p>
+<p><strong>Best Practice:</strong> Avoid calling <code>session.commit()</code> inside your lower-level CRUD/repository functions if a single API request needs to update multiple things. Instead, pass the <code>session</code> through your business logic and let the service layer or the endpoint handle the final <code>session.commit()</code> and <code>session.refresh()</code>. This ensures that if one part of the request fails, the entire transaction rolls back cleanly.</p>
+<hr>
+<h3 id="summary">Summary</h3>
+<ol>
+<li>Use <strong>FastAPI</strong> <code>Depends</code> for database session lifecycles.</li>
+<li>Use <strong>SQLModel inheritance</strong> (<code>table=True</code> vs standard models) to handle DTOs/Schemas.</li>
+<li>Keep route handlers clean by moving query logic to functional <strong>CRUD modules</strong>.</li>
+<li>Slice your application <strong>by feature folders</strong>, not by technical layers.</li>
+</ol>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/python.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

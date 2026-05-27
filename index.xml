@@ -6,8 +6,22 @@
     <description>Recent content in Main on Sc Online</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 15 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://schafsam.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Design Business App in Python</title>
+      <link>https://schafsam.github.io/posts/design-python-business-apps/</link>
+      <pubDate>Fri, 15 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://schafsam.github.io/posts/design-python-business-apps/</guid>
+      <description>&lt;p&gt;When building applications with &lt;strong&gt;FastAPI&lt;/strong&gt; and &lt;strong&gt;SQLModel&lt;/strong&gt;, you have an efficient and modern stack in 2026. SQLModel combines SQLAlchemy (the ORM) and Pydantic (data validation) into a single tool.&lt;/p&gt;&#xA;&lt;p&gt;This combination changes how we think about traditional design patterns.&#xA;The following five software design patterns keep your business app maintainable and scalable.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-the-repository-pattern---with-a-modern-twist&#34;&gt;1. The Repository Pattern - with a modern twist&lt;/h2&gt;&#xA;&lt;p&gt;In traditional enterprise apps, the &lt;em&gt;Repository Pattern&lt;/em&gt; abstracts data access. Since SQLModel already acts as a powerful abstraction layer, a rigid repository pattern can introduce unnecessary boilerplate.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Agentic Coding with Claude Code</title>
+      <link>https://schafsam.github.io/posts/agentic-claude-code/</link>
+      <pubDate>Sat, 11 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://schafsam.github.io/posts/agentic-claude-code/</guid>
+      <description>&lt;p&gt;//&lt;a href=&#34;https://www.youtube.com/watch?v=I_WOaDJ7g90&#34;&gt;https://www.youtube.com/watch?v=I_WOaDJ7g90&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;planning-mode&#34;&gt;Planning Mode&lt;/h2&gt;&#xA;&lt;p&gt;Claude Code includes a &lt;strong&gt;Planning Mode&lt;/strong&gt; that helps design implementation approaches before making code changes. This mode is activated via the &lt;code&gt;/plan&lt;/code&gt; command and is particularly valuable for complex tasks.&lt;/p&gt;&#xA;&lt;p&gt;Planning Mode should be used for:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Non-trivial implementation tasks&lt;/strong&gt; - Features or changes that span multiple files or systems&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Multiple valid approaches&lt;/strong&gt; - When there are several ways to solve a problem (e.g., choosing between Redis, in-memory, or file-based caching)&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Architectural decisions&lt;/strong&gt; - Changes requiring trade-offs between patterns or technologies&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Multi-file changes&lt;/strong&gt; - Tasks that will touch more than 2-3 files&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Unclear requirements&lt;/strong&gt; - When the scope needs investigation before implementation&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;User preference matters&lt;/strong&gt; - When implementation could reasonably go multiple ways and user input is valuable&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;how-planning-mode-works&#34;&gt;How Planning Mode Works&lt;/h3&gt;&#xA;&lt;p&gt;Planning Mode follows four phases:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Bash Command Line Hacking</title>
       <link>https://schafsam.github.io/posts/bash-command-line-hacking/</link>

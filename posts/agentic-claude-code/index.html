@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.158.0">
+
+
+<title>Agentic Coding with Claude Code - Sc Online</title>
+<meta property="og:title" content="Agentic Coding with Claude Code - Sc Online">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+<link rel="stylesheet" href="/css/custom.css">
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Agentic Coding with Claude Code",
+  "image": "https://schafsam.github.io/",
+  "datePublished": "2026-04-11T00:00:00Z",
+  "dateModified": "2026-04-11T00:00:00Z",
+  "author": {
+    "@type": "Person",
+    "name": "Schafsam"
+  },
+  "mainEntityOfPage": { "@type": "WebPage" },
+   "publisher": {
+    "@type": "Organization",
+    "name":  null ,
+    "logo": {
+      "@type": "ImageObject",
+      "url": {"alt":"Logo","height":50,"url":"logo.png","width":50}
+    }
+  },
+  "description": "//https://www.youtube.com/watch?v=I_WOaDJ7g90\nPlanning Mode Claude Code includes a Planning Mode that helps design implementation approaches before making code changes. This mode is activated via the /plan command and is particularly valuable for complex tasks.\nPlanning Mode should be used for:\nNon-trivial implementation tasks - Features or changes that span multiple files or systems Multiple valid approaches - When there are several ways to solve a problem (e.g., choosing between Redis, in-memory, or file-based caching) Architectural decisions - Changes requiring trade-offs between patterns or technologies Multi-file changes - Tasks that will touch more than 2-3 files Unclear requirements - When the scope needs investigation before implementation User preference matters - When implementation could reasonably go multiple ways and user input is valuable How Planning Mode Works Planning Mode follows four phases:\n",
+  "keywords": []
+}
+
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name":  null ,
+  "url": "https://schafsam.github.io/",
+  "sameAs": [
+    "https://github.com/schafsam"
+  ]
+}
+</script>
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/posts/">Blog</a></li>
+    
+    <li><a href="/resume/">Resume</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">Agentic Coding with Claude Code</h1>
+
+    
+
+    <div class="article-content">
+      
+      <p>//<a href="https://www.youtube.com/watch?v=I_WOaDJ7g90">https://www.youtube.com/watch?v=I_WOaDJ7g90</a></p>
+<h2 id="planning-mode">Planning Mode</h2>
+<p>Claude Code includes a <strong>Planning Mode</strong> that helps design implementation approaches before making code changes. This mode is activated via the <code>/plan</code> command and is particularly valuable for complex tasks.</p>
+<p>Planning Mode should be used for:</p>
+<ul>
+<li><strong>Non-trivial implementation tasks</strong> - Features or changes that span multiple files or systems</li>
+<li><strong>Multiple valid approaches</strong> - When there are several ways to solve a problem (e.g., choosing between Redis, in-memory, or file-based caching)</li>
+<li><strong>Architectural decisions</strong> - Changes requiring trade-offs between patterns or technologies</li>
+<li><strong>Multi-file changes</strong> - Tasks that will touch more than 2-3 files</li>
+<li><strong>Unclear requirements</strong> - When the scope needs investigation before implementation</li>
+<li><strong>User preference matters</strong> - When implementation could reasonably go multiple ways and user input is valuable</li>
+</ul>
+<h3 id="how-planning-mode-works">How Planning Mode Works</h3>
+<p>Planning Mode follows four phases:</p>
+<ol>
+<li><strong>Exploration</strong> - Claude uses Explore agents to research the codebase, find relevant files, and understand existing patterns</li>
+<li><strong>Design</strong> - A plan is created outlining the implementation strategy, affected files, and key decisions</li>
+<li><strong>Review</strong> - The user reviews the plan, asks questions, and approves or requests changes</li>
+<li><strong>Implementation</strong> - After approval, Claude exits Planning Mode and executes the plan</li>
+</ol>
+<h3 id="key-benefits">Key Benefits</h3>
+<ul>
+<li><strong>Alignment before action</strong> - Ensures you and Claude agree on the approach before any code is written</li>
+<li><strong>Prevents wasted effort</strong> - Catches misunderstandings early, before time is spent on the wrong solution</li>
+<li><strong>Explores alternatives</strong> - Allows discussion of different approaches and their trade-offs</li>
+<li><strong>Documents reasoning</strong> - The plan serves as documentation for why decisions were made</li>
+<li><strong>Reduces rework</strong> - Getting sign-off upfront means fewer mid-implementation course corrections</li>
+</ul>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="language-bash">/plan Add user authentication to the app
+</code></pre>
+<p>Claude will explore the codebase, identify existing auth patterns (if any), propose an approach (session-based vs JWT, middleware structure, etc.), and present a plan for review before implementing.</p>
+<h2 id="subagents">Subagents</h2>
+<p>&hellip;</p>
+<h2 id="rewind">Rewind</h2>
+<pre><code class="language-bash">&gt; /rewind 3
+Rewinding to snapshot from 3 turns ago...
+</code></pre>
+<h2 id="settting">Settting</h2>
+<pre><code class="language-javaScript">~/.claude/settings.josn
+{
+&quot;model&quot;: &quot;sonnet-4&quot;,
+&quot;MAX_THINKING_TOKENS&quot;: &quot;10000&quot;
+}
+</code></pre>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/python.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

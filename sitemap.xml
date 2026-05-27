@@ -2,16 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://schafsam.github.io/posts/bash-command-line-hacking/</loc>
-    <lastmod>2025-12-01T00:00:00+00:00</lastmod>
+    <loc>https://schafsam.github.io/posts/design-python-business-apps/</loc>
+    <lastmod>2026-05-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://schafsam.github.io/categories/</loc>
-    <lastmod>2025-12-01T00:00:00+00:00</lastmod>
+    <loc>https://schafsam.github.io/tags/fastapi/</loc>
+    <lastmod>2026-05-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/</loc>
-    <lastmod>2025-12-01T00:00:00+00:00</lastmod>
+    <lastmod>2026-05-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/posts/</loc>
+    <lastmod>2026-05-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://schafsam.github.io/tags/python/</loc>
+    <lastmod>2026-05-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://schafsam.github.io/tags/sqlmodel/</loc>
+    <lastmod>2026-05-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://schafsam.github.io/tags/</loc>
+    <lastmod>2026-05-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://schafsam.github.io/posts/agentic-claude-code/</loc>
+    <lastmod>2026-04-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://schafsam.github.io/categories/</loc>
+    <lastmod>2026-04-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://schafsam.github.io/categories/coding/</loc>
+    <lastmod>2026-04-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://schafsam.github.io/posts/bash-command-line-hacking/</loc>
     <lastmod>2025-12-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/categories/terminal/</loc>
@@ -27,12 +48,6 @@
     <lastmod>2024-09-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/posts/azure-function-and-secrets/</loc>
-    <lastmod>2024-09-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://schafsam.github.io/tags/python/</loc>
-    <lastmod>2024-09-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://schafsam.github.io/tags/</loc>
     <lastmod>2024-09-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://schafsam.github.io/categories/git/</loc>
