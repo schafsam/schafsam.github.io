@@ -118,16 +118,14 @@ The following five software design patterns keep your business app maintainable 
 Instead of creating massive classes for every entity, write clean reusable functions that handle database operations.</p>
 <p>Move your complex <code>select()</code>, <code>where()</code>, and <code>join()</code> logic out of the path operations and into dedicated <code>crud.py</code> or <code>services/</code> modules.</p>
 <p>It keeps your FastAPI route handlers (endpoints) thin and focused entirely on HTTP concerns (status codes, request parsing).</p>
-<pre><code class="language-Python"># crud/user.py
-from sqlmodel import Session, select
-from models import User
-
-def get_user_by_email(session: Session, email: str) -&gt; User | None:
-    statement = select(User).where(User.email == email)
-    return session.exec(statement).first()
-
-</code></pre>
-<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#75715e"># crud/user.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlmodel <span style="color:#f92672">import</span> Session, select
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> models <span style="color:#f92672">import</span> User
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_user_by_email</span>(session: Session, email: str) <span style="color:#f92672">-&gt;</span> User <span style="color:#f92672">|</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>    statement <span style="color:#f92672">=</span> select(User)<span style="color:#f92672">.</span>where(User<span style="color:#f92672">.</span>email <span style="color:#f92672">==</span> email)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> session<span style="color:#f92672">.</span>exec(statement)<span style="color:#f92672">.</span>first()
+</span></span></code></pre></div><hr>
 <h2 id="2-dependency-injection-pattern">2. Dependency Injection Pattern</h2>
 <p>FastAPI has a fabulous and built-in <em>Dependency Injection</em> system (<code>Depends</code>).
 Which is an asset for managing your database sessions.</p>
@@ -135,72 +133,66 @@ Which is an asset for managing your database sessions.</p>
 <p>It guarantees that database sessions are automatically
 opened when a request comes in and closed when the request finishes.</p>
 <p>It also makes unit testing easier because you can override dependencies with a mock database.</p>
-<pre><code class="language-python"># database.py
-from sqlmodel import Session, create_engine
-
-engine = create_engine(&quot;sqlite:///database.db&quot;)
-
-def get_session():
-    with Session(engine) as session:
-        yield session
-
-# api/routes.py
-@app.get(&quot;/users/{user_id}&quot;)
-def read_user(user_id: int, session: Session = Depends(get_session)):
-    # FastAPI automatically provides the session here
-    return get_user_by_id(session, user_id)
-
-</code></pre>
-<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># database.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlmodel <span style="color:#f92672">import</span> Session, create_engine
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#34;sqlite:///database.db&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_session</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> Session(engine) <span style="color:#66d9ef">as</span> session:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> session
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># api/routes.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74">&#34;/users/</span><span style="color:#e6db74">{user_id}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_user</span>(user_id: int, session: Session <span style="color:#f92672">=</span> Depends(get_session)):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># FastAPI automatically provides the session here</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> get_user_by_id(session, user_id)
+</span></span></code></pre></div><hr>
 <h2 id="3-data-transfer-object-pattern">3. Data Transfer Object Pattern</h2>
 <p>Because the models from SQLModel inherit from Pydantic, they are uniquely qualified to act as <a href="https://en.wikipedia.org/wiki/Data_transfer_object">data transfer objects (DTO)</a>.</p>
 <p>You should separate your database schemas from your API request/response schemas using <strong>SQLModel&rsquo;s multi-class approach</strong>.
 Use inheritance to create distinct flavors of your models.</p>
 <p>You rarely want to expose everything in your database to the frontend (like password hashes or internal IDs), nor do you want to require the frontend to send an <code>id</code> when creating a new resource.</p>
-<pre><code class="language-python"># models.py
-from sqlmodel import SQLModel, Field
-
-# Base properties shared across all flavors
-class UserBase(SQLModel):
-    email: str = Field(unique=True, index=True)
-    username: str
-
-# What the API expects when creating a user
-class UserCreate(UserBase):
-    password: str
-
-# What the API returns to the frontend (hides the password)
-class UserRead(UserBase):
-    id: int
-
-# The actual database table
-class User(UserBase, table=True):
-    id: int | None = Field(default=None, primary_key=True)
-    hashed_password: str
-
-</code></pre>
-<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># models.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlmodel <span style="color:#f92672">import</span> SQLModel, Field
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Base properties shared across all flavors</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserBase</span>(SQLModel):
+</span></span><span style="display:flex;"><span>    email: str <span style="color:#f92672">=</span> Field(unique<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, index<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    username: str
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># What the API expects when creating a user</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserCreate</span>(UserBase):
+</span></span><span style="display:flex;"><span>    password: str
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># What the API returns to the frontend (hides the password)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserRead</span>(UserBase):
+</span></span><span style="display:flex;"><span>    id: int
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The actual database table</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>(UserBase, table<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>    id: int <span style="color:#f92672">|</span> <span style="color:#66d9ef">None</span> <span style="color:#f92672">=</span> Field(default<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, primary_key<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    hashed_password: str
+</span></span></code></pre></div><hr>
 <h2 id="4-routermodule-pattern">4. Router/Module Pattern</h2>
 <p>As your application gorws use FastAPI’s <code>APIRouter</code> to implement a modular design pattern.
 Organize your code so that the folder structure <strong>&ldquo;screams&rdquo;</strong> what the application does.</p>
 <p>Group the code by feature rather than by technical layer, keeps the codebase decoupled.
 It allows for multiple developers to work on different features (e.g., users, items, billing) without merge conflicts.</p>
-<pre><code class="language-text">app/
-├── main.py
-├── core/                  # Configuration, security, database setup
-│   ├── config.py
-│   └── database.py
-├── users/                 # Everything related to the 'Users' domain
-│   ├── router.py          # Endpoints
-│   ├── models.py          # SQLModel classes
-│   └── crud.py            # DB operations
-└── items/                 # Everything related to the 'Items' domain
-    ├── router.py
-    ├── models.py
-    └── crud.py
-
-</code></pre>
-<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>app/
+</span></span><span style="display:flex;"><span>├── main.py
+</span></span><span style="display:flex;"><span>├── core/                  # Configuration, security, database setup
+</span></span><span style="display:flex;"><span>│   ├── config.py
+</span></span><span style="display:flex;"><span>│   └── database.py
+</span></span><span style="display:flex;"><span>├── users/                 # Everything related to the &#39;Users&#39; domain
+</span></span><span style="display:flex;"><span>│   ├── router.py          # Endpoints
+</span></span><span style="display:flex;"><span>│   ├── models.py          # SQLModel classes
+</span></span><span style="display:flex;"><span>│   └── crud.py            # DB operations
+</span></span><span style="display:flex;"><span>└── items/                 # Everything related to the &#39;Items&#39; domain
+</span></span><span style="display:flex;"><span>    ├── router.py
+</span></span><span style="display:flex;"><span>    ├── models.py
+</span></span><span style="display:flex;"><span>    └── crud.py
+</span></span></code></pre></div><hr>
 <h2 id="5-unit-of-work-pattern">5. Unit of Work Pattern</h2>
 <p>The Unit of Work pattern maintains a list of objects affected by a business transaction and coordinates the writing out of changes.</p>
 <p>In SQLModel, the <code>Session</code> object <strong>is</strong> your Unit of Work.</p>
