@@ -15,9 +15,9 @@
 			<atom:link href="https://schafsam.github.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>Global Information Tracker (git)</title>
-				<link>https://schafsam.github.io/posts/git-commands/</link>
+				<link>https://schafsam.github.io/2024/07/git-commands/</link>
 				<pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
-				<guid>https://schafsam.github.io/posts/git-commands/</guid>
+				<guid>https://schafsam.github.io/2024/07/git-commands/</guid>
 				<description>&lt;p&gt;Git commands I like to remember.&lt;/p&gt;&#xA;&lt;h2 id=&#34;put-aside-and-get-back&#34;&gt;Put Aside and Get Back&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;git-scm.com/book/en/V1/Git-Tools-Stashing&#34;&gt;&lt;code&gt;git stash&lt;/code&gt;&lt;/a&gt; puts &lt;em&gt;uncommitted changes&lt;/em&gt; in a special commit to retrieve later.&#xA;When you have some work that is not yet ready to commit, but you need to somethein else to the repo or get the fresh remote changes.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;git stash save&lt;/code&gt; if you have uncommitted work.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;git pull --rebase&lt;/code&gt; get updates from the remote and apply them&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;git stash pop&lt;/code&gt; restore your uncommitted work.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;select-hunks-interactively&#34;&gt;Select Hunks Interactively&lt;/h2&gt;&#xA;&lt;p&gt;With &lt;code&gt;git add -p &amp;lt;file&amp;gt;&lt;/code&gt; for patch mode the file or files are not just added but you can choose which so called hunks of the changes should staged for commiting.&lt;/p&gt;</description>
 			</item>
 	</channel>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.168.0">
+
+
+<title>Bash Command Line Hacking - Sc Online</title>
+<meta property="og:title" content="Bash Command Line Hacking - Sc Online">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+<link rel="stylesheet" href="/css/custom.css">
+
+<style>
+  html { scroll-behavior: smooth; }
+
+  .post-toc { margin: 1.5rem 0; font-size: 0.9rem; line-height: 1.5; font-family: 'Lato', sans-serif; }
+  .post-toc summary { cursor: pointer; font-weight: 700; color: #222; }
+  .post-toc ul { list-style: none; margin: 0.5rem 0 0; padding: 0; }
+  .post-toc ul ul { padding-left: 1rem; }
+  .post-toc li { margin: 0.2rem 0; }
+  .post-toc a { color: #777; text-decoration: none; }
+  .post-toc a:hover { color: #111; }
+  .post-toc a.is-active { color: #000; font-weight: 600; }
+
+  .post-toc a {
+    color: #777;
+    text-decoration: none;
+    transition: background 150ms ease, color 150ms ease;
+  }
+   
+  .post-toc a:hover,
+  .post-toc a.is-active {
+    color: #111;
+    background: #CBF8DF;
+    box-shadow: 0 0 0 2px #CBF8DF;  
+    border-radius: 2px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  .post-toc a.is-active { font-weight: 600; }
+
+   
+  @media (min-width: 1200px) {
+    .post-toc {
+      position: fixed;
+      top: 6rem;
+      left: calc(50vw - 600px);  
+      width: 190px;
+      max-height: calc(100vh - 8rem);
+      overflow-y: auto;          
+      margin: 0;
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+    .post-toc summary {
+      cursor: default;
+      pointer-events: none;      
+      list-style: none;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    .post-toc summary::-webkit-details-marker { display: none; }
+  }
+</style>
+
+<script>
+  
+  (function () {
+    document.addEventListener('DOMContentLoaded', function () {
+      var toc = document.querySelector('.post-toc');
+      if (!toc) return;
+      var links = Array.prototype.slice.call(toc.querySelectorAll('a[href^="#"]'));
+      var map = {}, headings = [];
+      links.forEach(function (a) {
+        var id = decodeURIComponent(a.getAttribute('href').slice(1));
+        var h = document.getElementById(id);
+        if (h) { map[id] = a; headings.push(h); }
+      });
+      if (!headings.length) return;
+
+      function setActive(id) {
+        for (var k in map) map[k].classList.toggle('is-active', k === id);
+      }
+      function onScroll() {
+        var current = '';
+        for (var i = 0; i < headings.length; i++) {
+          if (headings[i].getBoundingClientRect().top <= 80) current = headings[i].id;
+          else break;
+        }
+        setActive(current);
+      }
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          ticking = true;
+          window.requestAnimationFrame(function () { onScroll(); ticking = false; });
+        }
+      }, { passive: true });
+      onScroll();
+    });
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/posts/">Blog</a></li>
+    
+    <li><a href="/resume/">Resume</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">Bash Command Line Hacking</h1>
+
+    
+
+    
+    
+    <aside class="post-toc">
+      <details open>
+        <summary>Contents</summary>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#parameter-expansion">Parameter Expansion</a></li>
+    <li><a href="#command-substitution">Command Substitution</a></li>
+    <li><a href="#arithmetic-expansion">Arithmetic Expansion</a></li>
+    <li><a href="#tilde-expansion">Tilde Expansion</a></li>
+    <li><a href="#brace-expansion">Brace Expansion</a></li>
+    <li><a href="#quoting">Quoting</a></li>
+  </ul>
+</nav>
+      </details>
+    </aside>
+    
+
+    <div class="article-content">
+      <p>Your terminal experience and preferences might lead you to choose a different shell than
+Bash.
+However, wheter it is Bash, Zsh, or another variant, they share commonalities that date
+back to the original <a href="https://en.wikipedia.org/wiki/Bourne_shell">Bourne shell</a> <code>sh</code>.</p>
+<p>To determine which shell is currently running on your system, try:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; echo $SHELL
+</span></span></code></pre></div><p>Common shells are:</p>
+<ul>
+<li><code>/bin/sh</code> <a href="https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html">Docs</a></li>
+<li><code>/bin/bash</code> <a href="https://www.gnu.org/software/bash/manual/bash.html">Docs</a></li>
+<li><code>/bin/zsh</code> <a href="https://zsh.sourceforge.io/Doc/Release/zsh_toc.html">Docs</a></li>
+</ul>
+<p>The Bourne shell is the foundation and precursor to many modern command-line interfaces,
+making it still worth studying today. The following commands refer to <strong>Bash</strong> and use the
+<a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a> <code>#!/bin/bash</code>.</p>
+<p>Alternatively the shebang allows you to pass one argument after the interpreter.
+#! interpreter [optional-one-arg-only]
+You can use the <code>/usr/bin/env</code> command in combination with <code>bash</code> or rather with another interpreted script.
+To change the shell options within your env or session you can use the
+<a href="https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html%3E"><code>set</code></a> command.</p>
+<h2 id="parameter-expansion">Parameter Expansion</h2>
+<p>String fromatting is a common task. To capitalize your stirng, make the first letter a capital letter.
+You can use the caret sign. Two caret signs make the string to all upper case.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; echo <span style="color:#e6db74">${</span>USER^<span style="color:#e6db74">}</span>      <span style="color:#75715e"># caret symbol</span>
+</span></span><span style="display:flex;"><span>&gt; echo <span style="color:#e6db74">${</span>USER^^<span style="color:#e6db74">}</span>     <span style="color:#75715e"># caret symbol</span>
+</span></span></code></pre></div><p>Slicing is zero index based and also allows for reverse extraction.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; echo <span style="color:#e6db74">${</span>USER: -3:2<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h2 id="command-substitution">Command Substitution</h2>
+<p>Command subsitution executes the for example the &lsquo;date&rsquo; command and captures its output as a string.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">$(</span>date<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><p>In general, using <code>$()</code> is a convenient way to execute external commands within Bash scripts
+or interactive shells.</p>
+<h2 id="arithmetic-expansion"><a href="https://www.gnu.org/software/bash/manual/bash.html#Arithmetic-Expansion-1">Arithmetic Expansion</a></h2>
+<p>Use the command line as basic calcualtor.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; x<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>&gt; y<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>&gt; echo <span style="color:#66d9ef">$((</span>x <span style="color:#f92672">+</span> y<span style="color:#66d9ef">))</span>    <span style="color:#75715e"># &lt;- no need for $ signs</span>
+</span></span></code></pre></div><p>For arbitrary precission calculation use the basic
+calculator <code>bc</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; echo <span style="color:#e6db74">&#34;scale=2; 5/3&#34;</span> | bc
+</span></span></code></pre></div><h2 id="tilde-expansion">Tilde Expansion</h2>
+<p>The tilde expansion helps with navigating the working directories.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; echo ~
+</span></span><span style="display:flex;"><span>&gt; echo $HOME
+</span></span></code></pre></div><p>To get the home directory of a specific user do this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; echo ~username
+</span></span></code></pre></div><p>The <code>+</code> and <code>-</code> signs allow you to navigate between the current and previous working
+directories. The following two commands are the same.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; echo $PWD $OLDPWD
+</span></span><span style="display:flex;"><span>&gt; echo $~+ $~-
+</span></span></code></pre></div><h2 id="brace-expansion"><a href="https://www.gnu.org/software/bash/manual/bash.html#Brace-Expansion-1">Brace Expansion</a></h2>
+<p>To generate strings which share a prefix or suffix you can use the brace expansion on a range list.
+This can be useful for files and folder creation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; echo <span style="color:#f92672">{</span>1..10<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">5</span> <span style="color:#ae81ff">6</span> <span style="color:#ae81ff">7</span> <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">9</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>&gt; echo <span style="color:#f92672">{</span>1..10..2<span style="color:#f92672">}</span>    <span style="color:#75715e"># step size of two</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">5</span> <span style="color:#ae81ff">7</span> <span style="color:#ae81ff">9</span>
+</span></span><span style="display:flex;"><span>&gt; echo month<span style="color:#f92672">{</span>1..10..2<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>month1 month3 month5 month7 month9
+</span></span></code></pre></div><h2 id="quoting"><a href="https://www.gnu.org/software/bash/manual/bash.html#Quoting-1">Quoting</a></h2>
+<p>If you want to use a reserved character like &lsquo;&amp;&rsquo; you must use one of these escape or quote options.</p>
+<ul>
+<li><code>\</code> gets the literal value of the next character</li>
+<li><code>''</code> single quotes take the text as raw (note: changed from &ldquo;singel&rdquo; to &ldquo;single&rdquo;).</li>
+<li><code>&quot;&quot;</code> double quotes keeps the literal meaning, but allows <code>$</code>, `` (backtick), and <code>\</code> to be</li>
+</ul>
+<p>For example, escape the ampersand for background jobs with a backslash.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; echo John &amp; Johnna    <span style="color:#75715e"># without escaping</span>
+</span></span><span style="display:flex;"><span>&gt; echo John <span style="color:#ae81ff">\&amp;</span> Johnna   <span style="color:#75715e"># with escaping using a backslash</span>
+</span></span></code></pre></div><p>Use the backslash to get a literal backslash.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt; echo <span style="color:#e6db74">&#34;C:\Users\\</span>$USER<span style="color:#e6db74">\Documents&#34;</span>
+</span></span></code></pre></div>
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/python.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

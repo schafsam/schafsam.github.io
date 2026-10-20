@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.168.0">
+
+
+<title>OData Syntax - Sc Online</title>
+<meta property="og:title" content="OData Syntax - Sc Online">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+<link rel="stylesheet" href="/css/custom.css">
+
+<style>
+  html { scroll-behavior: smooth; }
+
+  .post-toc { margin: 1.5rem 0; font-size: 0.9rem; line-height: 1.5; font-family: 'Lato', sans-serif; }
+  .post-toc summary { cursor: pointer; font-weight: 700; color: #222; }
+  .post-toc ul { list-style: none; margin: 0.5rem 0 0; padding: 0; }
+  .post-toc ul ul { padding-left: 1rem; }
+  .post-toc li { margin: 0.2rem 0; }
+  .post-toc a { color: #777; text-decoration: none; }
+  .post-toc a:hover { color: #111; }
+  .post-toc a.is-active { color: #000; font-weight: 600; }
+
+  .post-toc a {
+    color: #777;
+    text-decoration: none;
+    transition: background 150ms ease, color 150ms ease;
+  }
+   
+  .post-toc a:hover,
+  .post-toc a.is-active {
+    color: #111;
+    background: #CBF8DF;
+    box-shadow: 0 0 0 2px #CBF8DF;  
+    border-radius: 2px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  .post-toc a.is-active { font-weight: 600; }
+
+   
+  @media (min-width: 1200px) {
+    .post-toc {
+      position: fixed;
+      top: 6rem;
+      left: calc(50vw - 600px);  
+      width: 190px;
+      max-height: calc(100vh - 8rem);
+      overflow-y: auto;          
+      margin: 0;
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+    .post-toc summary {
+      cursor: default;
+      pointer-events: none;      
+      list-style: none;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    .post-toc summary::-webkit-details-marker { display: none; }
+  }
+</style>
+
+<script>
+  
+  (function () {
+    document.addEventListener('DOMContentLoaded', function () {
+      var toc = document.querySelector('.post-toc');
+      if (!toc) return;
+      var links = Array.prototype.slice.call(toc.querySelectorAll('a[href^="#"]'));
+      var map = {}, headings = [];
+      links.forEach(function (a) {
+        var id = decodeURIComponent(a.getAttribute('href').slice(1));
+        var h = document.getElementById(id);
+        if (h) { map[id] = a; headings.push(h); }
+      });
+      if (!headings.length) return;
+
+      function setActive(id) {
+        for (var k in map) map[k].classList.toggle('is-active', k === id);
+      }
+      function onScroll() {
+        var current = '';
+        for (var i = 0; i < headings.length; i++) {
+          if (headings[i].getBoundingClientRect().top <= 80) current = headings[i].id;
+          else break;
+        }
+        setActive(current);
+      }
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          ticking = true;
+          window.requestAnimationFrame(function () { onScroll(); ticking = false; });
+        }
+      }, { passive: true });
+      onScroll();
+    });
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/posts/">Blog</a></li>
+    
+    <li><a href="/resume/">Resume</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">OData Syntax</h1>
+
+    
+
+    
+    
+    <aside class="post-toc">
+      <details open>
+        <summary>Contents</summary>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#filter-rows">Filter Rows</a></li>
+    <li><a href="#limit-rows">Limit rows</a></li>
+    <li><a href="#joining-tables">Joining Tables</a>
+      <ul>
+        <li><a href="#multiple-joins">Multiple Joins</a></li>
+      </ul>
+    </li>
+    <li><a href="#update-records-with-lookup">Update Records with Lookup</a></li>
+  </ul>
+</nav>
+      </details>
+    </aside>
+    
+
+    <div class="article-content">
+      <p>Microsoft&rsquo; data service commonly provide RESTful interfaces that utilize <a href="https://www.odata.org/getting-started/basic-tutorial/">OData syntax</a>.</p>
+<h2 id="filter-rows">Filter Rows</h2>
+<p>Beside the option to retrieve all records beloning to a entity you have the ability to specify additional <code>filter</code> criteria for your query. The filter employs various syntax and operators, including acronyms such as <strong><code>eq</code></strong> for equal and <strong><code>gt</code></strong> for greater than, among others.</p>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left">Symbol</th>
+					<th style="text-align: left">Operator</th>
+					<th style="text-align: left">Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left">eq</td>
+					<td style="text-align: left">=</td>
+					<td style="text-align: left"><code>$filter=size eq 100</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left">ne</td>
+					<td style="text-align: left">!=</td>
+					<td style="text-align: left"><code>$filter=size ne 200</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left">gt</td>
+					<td style="text-align: left">&gt;</td>
+					<td style="text-align: left"><code>$filter=size gt 50</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left">ge</td>
+					<td style="text-align: left">&gt;=</td>
+					<td style="text-align: left"><code>$filter=size ge 100</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left">lt</td>
+					<td style="text-align: left">&lt;</td>
+					<td style="text-align: left"><code>$filter=size lt 300</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left">le</td>
+					<td style="text-align: left">&lt;=</td>
+					<td style="text-align: left"><code>$filter=size le 125</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left">and</td>
+					<td style="text-align: left">&amp;</td>
+					<td style="text-align: left"><code>$filter=size gt 100 and size lt 200</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left">or</td>
+					<td style="text-align: left">|</td>
+					<td style="text-align: left"><code>$filter=size lt 10 or size gt 400</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left">not</td>
+					<td style="text-align: left">!</td>
+					<td style="text-align: left"><code>$filter=not size eq 100</code></td>
+			</tr>
+			<tr>
+					<td style="text-align: left">()</td>
+					<td style="text-align: left"><em>precedence</em></td>
+					<td style="text-align: left"><code>$filter=(size eq 100) or (...)</code></td>
+			</tr>
+	</tbody>
+</table>
+<p>The query response has the following schema.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  odata.metadata: <span style="color:#e6db74">&#34;http://.../</span>$metadata<span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>  value:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        name: <span style="color:#e6db74">&#34;Crocodile&#34;</span>,
+</span></span><span style="display:flex;"><span>        url: <span style="color:#e6db74">&#34;https://en.wikipedia.org/wiki/Crocodile&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        name: <span style="color:#e6db74">&#34;Alligator&#34;</span>,
+</span></span><span style="display:flex;"><span>        url: <span style="color:#e6db74">&#34;https://en.wikipedia.org/wiki/American_alligator&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="limit-rows">Limit rows</h2>
+<p>The <code>top</code> command lets you limit the number of records your query will return.</p>
+<pre tabindex="0"><code>/accounts?$top=10
+</code></pre><h2 id="joining-tables">Joining Tables</h2>
+<p>The way to join tables in Odata is to make use of the <code>expand</code> command which will return a nested document with the related items. For example to looks up all acounts and joins them with their addresses use the follwing query:</p>
+<pre tabindex="0"><code>crm.dynamics.com/api/data/v9.2/acoutns?$select=name&amp;$expand=Account_CustomerAddrss
+</code></pre><p>The <code>expand</code> command takes a relationship to resolve the link between the tables. To know what name the relationship has you can do the following.</p>
+<p>On the address table go to relationshpas and search for the name of the relationship to your source table.</p>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left">Display name</th>
+					<th style="text-align: left">Name</th>
+					<th style="text-align: left">Related table</th>
+					<th style="text-align: left">Relationship type</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left">Parent</td>
+					<td style="text-align: left">Account_CustomerAddress</td>
+					<td style="text-align: left">Account</td>
+					<td style="text-align: left">Many-to-one</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="multiple-joins">Multiple Joins</h3>
+<p>A common way to join multiple lookups at the same time it is possible to state the tables with a comma separated.</p>
+<pre tabindex="0"><code>...contacts(1939100)/?$expand=firstTable,secondTable
+</code></pre><h2 id="update-records-with-lookup">Update Records with Lookup</h2>
+<p>Records are connected to each other through <em>relationships</em>, with a foreign key set on one side of the relationship. In the context of OData, this is called binding.
+<a href="https://learn.microsoft.com/en-us/power-apps/developer/data-platform/webapi/associate-disassociate-entities-using-web-api">Assosiate with a single-valued naviagtion property</a>.</p>
+<pre tabindex="0"><code>{
+  &#34;parentcustomerid_account@odata.bind&#34;: &#34;/accounts&#34;
+}
+</code></pre><p>An example from Microsoft Dynamics 365 Web API to set the field Regarding.</p>
+<pre tabindex="0"><code>{
+  &#34;regardingobjectid_account@odata.bind&#34;: &#34;/accounts(a8d8cf490-...-6405bd2b29d8)&#34;
+}
+</code></pre><p>Send this data as a POST request will set the field <code>_regardingobejctid_value</code> with the according GUID.</p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/python.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

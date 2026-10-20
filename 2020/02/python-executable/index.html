@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.168.0">
+
+
+<title>Python Executable with Dunder Main - Sc Online</title>
+<meta property="og:title" content="Python Executable with Dunder Main - Sc Online">
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+<link rel="stylesheet" href="/css/custom.css">
+
+<style>
+  html { scroll-behavior: smooth; }
+
+  .post-toc { margin: 1.5rem 0; font-size: 0.9rem; line-height: 1.5; font-family: 'Lato', sans-serif; }
+  .post-toc summary { cursor: pointer; font-weight: 700; color: #222; }
+  .post-toc ul { list-style: none; margin: 0.5rem 0 0; padding: 0; }
+  .post-toc ul ul { padding-left: 1rem; }
+  .post-toc li { margin: 0.2rem 0; }
+  .post-toc a { color: #777; text-decoration: none; }
+  .post-toc a:hover { color: #111; }
+  .post-toc a.is-active { color: #000; font-weight: 600; }
+
+  .post-toc a {
+    color: #777;
+    text-decoration: none;
+    transition: background 150ms ease, color 150ms ease;
+  }
+   
+  .post-toc a:hover,
+  .post-toc a.is-active {
+    color: #111;
+    background: #CBF8DF;
+    box-shadow: 0 0 0 2px #CBF8DF;  
+    border-radius: 2px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  .post-toc a.is-active { font-weight: 600; }
+
+   
+  @media (min-width: 1200px) {
+    .post-toc {
+      position: fixed;
+      top: 6rem;
+      left: calc(50vw - 600px);  
+      width: 190px;
+      max-height: calc(100vh - 8rem);
+      overflow-y: auto;          
+      margin: 0;
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+    .post-toc summary {
+      cursor: default;
+      pointer-events: none;      
+      list-style: none;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    .post-toc summary::-webkit-details-marker { display: none; }
+  }
+</style>
+
+<script>
+  
+  (function () {
+    document.addEventListener('DOMContentLoaded', function () {
+      var toc = document.querySelector('.post-toc');
+      if (!toc) return;
+      var links = Array.prototype.slice.call(toc.querySelectorAll('a[href^="#"]'));
+      var map = {}, headings = [];
+      links.forEach(function (a) {
+        var id = decodeURIComponent(a.getAttribute('href').slice(1));
+        var h = document.getElementById(id);
+        if (h) { map[id] = a; headings.push(h); }
+      });
+      if (!headings.length) return;
+
+      function setActive(id) {
+        for (var k in map) map[k].classList.toggle('is-active', k === id);
+      }
+      function onScroll() {
+        var current = '';
+        for (var i = 0; i < headings.length; i++) {
+          if (headings[i].getBoundingClientRect().top <= 80) current = headings[i].id;
+          else break;
+        }
+        setActive(current);
+      }
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          ticking = true;
+          window.requestAnimationFrame(function () { onScroll(); ticking = false; });
+        }
+      }, { passive: true });
+      onScroll();
+    });
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/posts/">Blog</a></li>
+    
+    <li><a href="/resume/">Resume</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">Python Executable with Dunder Main</h1>
+
+    
+
+    
+    
+    <aside class="post-toc">
+      <details open>
+        <summary>Contents</summary>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#compress-the-artifact">Compress the Artifact</a></li>
+    <li><a href="#create-a-binary">Create a Binary</a></li>
+  </ul>
+</nav>
+      </details>
+    </aside>
+    
+
+    <div class="article-content">
+      <p>With Python you can run a directory as an executable.
+The <code>__main__.py</code> file in <code>myprojectfolder</code> serves as the entry point for your program.</p>
+<pre><code>myprojectfolder/
+    |_ __main__.py
+    |_ __init__.py
+</code></pre>
+<p>With <code>__main__.py</code> being:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Hello&#34;</span>)
+</span></span></code></pre></div><p>So you can call the directory like this:</p>
+<pre><code>python myprojectfolder
+Hello
+</code></pre>
+<p>This functionality works not only at the top-level directory but also in submodules.
+If your project has a subfolder with its own <code>__main__.py</code>, you can access it by running <code>python myprojectfolder.subfolder</code>, and Python will execute the code inside that file as the entry point,</p>
+<h2 id="compress-the-artifact">Compress the Artifact</h2>
+<p>Instead of calling a directory, you can zip up the whole porject and make the zip file a runnable program.</p>
+<pre><code>python -m zipfile -c myproject.zip myprojectfolder
+</code></pre>
+<p>Which will make it possible to run the <code>myproject</code> as one.</p>
+<pre><code>python myproject.zip
+</code></pre>
+<h2 id="create-a-binary">Create a Binary</h2>
+<p>You can also easily obfuscate and turn the project into a binary-like program by adding a shebang and combining the contents of the zip file.</p>
+<p>Assuming you are working on a linux machine with Python installed along with all required packages:</p>
+<pre><code>echo '#!/usr/bin/env python' &gt;&gt; myprogram
+cat myproject.zip &gt;&gt; myprogram
+chmod +x myprogram
+</code></pre>
+<p>Now you can run the program like this:</p>
+<pre><code>./myprogram
+</code></pre>
+<p>Every program that can call a subprocess can now interact with the packaged contents.</p>
+<p>Alternatively, you can place it in a directory within your <code>PATH</code> and have a command-line tool at your fingertips.</p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/python.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

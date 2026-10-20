@@ -15,65 +15,65 @@
 			<atom:link href="https://schafsam.github.io/index.xml" rel="self" type="application/rss+xml" />
 			<item>
 				<title>Some Python Packages</title>
-				<link>https://schafsam.github.io/posts/python-packages/</link>
+				<link>https://schafsam.github.io/2026/06/some-python-packages/</link>
 				<pubDate>Mon, 01 Jun 2026 00:00:00 +0000</pubDate>
-				<guid>https://schafsam.github.io/posts/python-packages/</guid>
+				<guid>https://schafsam.github.io/2026/06/some-python-packages/</guid>
 				<description>&lt;h2 id=&#34;apscheduler&#34;&gt;APScheduler&lt;/h2&gt;&#xA;&lt;p&gt;The first time I came arround the package &lt;a href=&#34;https://apscheduler.readthedocs.io/en/3.x/userguide.html#basic-concepts&#34;&gt;APScheduler&lt;/a&gt; is due to the package telegram. It is a lightweight, in-process library ideal for simple, time-based job scheduling. As a contrast, &lt;a href=&#34;&#34;&gt;Celery&lt;/a&gt; is a heavyweight, ditributed task queue designed for heavy, asynchronous workloads across multiple machines.&lt;/p&gt;&#xA;&lt;p&gt;With the &lt;a href=&#34;https://github.com/agronholm/apscheduler&#34;&gt;source&lt;/a&gt;.&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>Design Business App in Python</title>
-				<link>https://schafsam.github.io/posts/design-python-business-apps/</link>
+				<link>https://schafsam.github.io/2026/05/design-python-business-apps/</link>
 				<pubDate>Fri, 15 May 2026 00:00:00 +0000</pubDate>
-				<guid>https://schafsam.github.io/posts/design-python-business-apps/</guid>
+				<guid>https://schafsam.github.io/2026/05/design-python-business-apps/</guid>
 				<description>&lt;p&gt;When building applications with &lt;strong&gt;FastAPI&lt;/strong&gt; and &lt;strong&gt;SQLModel&lt;/strong&gt;, you have an efficient and modern stack in 2026. SQLModel combines SQLAlchemy the ORM and Pydantic data validation into a single tool.&lt;/p&gt;&#xA;&lt;p&gt;This combination changes how we think about traditional design patterns.&#xA;The following five software design patterns keep your business app maintainable and scalable.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-the-repository-pattern---with-a-modern-twist&#34;&gt;1. The Repository Pattern - with a modern twist&lt;/h2&gt;&#xA;&lt;p&gt;In traditional enterprise apps, the &lt;em&gt;Repository Pattern&lt;/em&gt; abstracts data access. Since SQLModel already acts as a powerful abstraction layer, a rigid repository pattern can introduce unnecessary boilerplate.&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>Bash Command Line Hacking</title>
-				<link>https://schafsam.github.io/posts/bash-command-line-hacking/</link>
+				<link>https://schafsam.github.io/2025/12/bash-command-line-hacking/</link>
 				<pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
-				<guid>https://schafsam.github.io/posts/bash-command-line-hacking/</guid>
+				<guid>https://schafsam.github.io/2025/12/bash-command-line-hacking/</guid>
 				<description>&lt;p&gt;Your terminal experience and preferences might lead you to choose a different shell than&#xA;Bash.&#xA;However, wheter it is Bash, Zsh, or another variant, they share commonalities that date&#xA;back to the original &lt;a href=&#34;https://en.wikipedia.org/wiki/Bourne_shell&#34;&gt;Bourne shell&lt;/a&gt; &lt;code&gt;sh&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;To determine which shell is currently running on your system, try:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; echo $SHELL&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Common shells are:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;/bin/sh&lt;/code&gt; &lt;a href=&#34;https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html&#34;&gt;Docs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;/bin/bash&lt;/code&gt; &lt;a href=&#34;https://www.gnu.org/software/bash/manual/bash.html&#34;&gt;Docs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;/bin/zsh&lt;/code&gt; &lt;a href=&#34;https://zsh.sourceforge.io/Doc/Release/zsh_toc.html&#34;&gt;Docs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The Bourne shell is the foundation and precursor to many modern command-line interfaces,&#xA;making it still worth studying today. The following commands refer to &lt;strong&gt;Bash&lt;/strong&gt; and use the&#xA;&lt;a href=&#34;https://en.wikipedia.org/wiki/Shebang_(Unix)&#34;&gt;shebang&lt;/a&gt; &lt;code&gt;#!/bin/bash&lt;/code&gt;.&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>Synchronize Data to External Disk</title>
-				<link>https://schafsam.github.io/posts/synchronize-data-to-external-disk/</link>
+				<link>https://schafsam.github.io/2024/12/synchronize-data-to-external-disk/</link>
 				<pubDate>Sun, 22 Dec 2024 00:00:00 +0000</pubDate>
-				<guid>https://schafsam.github.io/posts/synchronize-data-to-external-disk/</guid>
+				<guid>https://schafsam.github.io/2024/12/synchronize-data-to-external-disk/</guid>
 				<description>&lt;p&gt;The internet is full of usefull information that is accessable from everywhere.&#xA;Unfortunately some information is only available for a certain period of time.&#xA;For instance, while you can stream real-time tick data from stock markets, accessing historical data may only provide per-minute aggregates.&#xA;Similarly, request for proposals (RFPs) are typically only available for a set period of time before they are taken down from the web.&#xA;This makes all sense because storage is not for free and the amount of data would grow over the top.&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>Get Secrets from Vault in an Azure Function</title>
-				<link>https://schafsam.github.io/posts/azure-function-and-secrets/</link>
+				<link>https://schafsam.github.io/2024/09/azure-function-and-secrets/</link>
 				<pubDate>Tue, 03 Sep 2024 00:00:00 +0000</pubDate>
-				<guid>https://schafsam.github.io/posts/azure-function-and-secrets/</guid>
+				<guid>https://schafsam.github.io/2024/09/azure-function-and-secrets/</guid>
 				<description>&lt;p&gt;To retrieve secrets from Azure Key Vault there are two ways.&#xA;First, by using the &lt;code&gt;azure-keyvault&lt;/code&gt; package and second via environment variables.&lt;/p&gt;&#xA;&lt;p&gt;Using the dedicated packages allows you to retrieve an update secret during run time. The environment variables on the other hand are set when the application is launched and need a relaunch to updated.&lt;/p&gt;&#xA;&lt;p&gt;From the 12-Factor App perspective, secret management can be either a backing service or Configuration.&#xA;Kubernetes treats secrets as configuration data, while using a Key Vault client follows the backing-service approach.&#xA;An alternative is to delegate the secrete management to the cloud and use a &lt;em&gt;Managed Identity&lt;/em&gt; in this case with Entra ID.&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>Global Information Tracker (git)</title>
-				<link>https://schafsam.github.io/posts/git-commands/</link>
+				<link>https://schafsam.github.io/2024/07/git-commands/</link>
 				<pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
-				<guid>https://schafsam.github.io/posts/git-commands/</guid>
+				<guid>https://schafsam.github.io/2024/07/git-commands/</guid>
 				<description>&lt;p&gt;Git commands I like to remember.&lt;/p&gt;&#xA;&lt;h2 id=&#34;put-aside-and-get-back&#34;&gt;Put Aside and Get Back&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;git-scm.com/book/en/V1/Git-Tools-Stashing&#34;&gt;&lt;code&gt;git stash&lt;/code&gt;&lt;/a&gt; puts &lt;em&gt;uncommitted changes&lt;/em&gt; in a special commit to retrieve later.&#xA;When you have some work that is not yet ready to commit, but you need to somethein else to the repo or get the fresh remote changes.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;git stash save&lt;/code&gt; if you have uncommitted work.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;git pull --rebase&lt;/code&gt; get updates from the remote and apply them&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;git stash pop&lt;/code&gt; restore your uncommitted work.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;select-hunks-interactively&#34;&gt;Select Hunks Interactively&lt;/h2&gt;&#xA;&lt;p&gt;With &lt;code&gt;git add -p &amp;lt;file&amp;gt;&lt;/code&gt; for patch mode the file or files are not just added but you can choose which so called hunks of the changes should staged for commiting.&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>OData Syntax</title>
-				<link>https://schafsam.github.io/posts/odata-syntax/</link>
+				<link>https://schafsam.github.io/2024/02/odata-syntax/</link>
 				<pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
-				<guid>https://schafsam.github.io/posts/odata-syntax/</guid>
+				<guid>https://schafsam.github.io/2024/02/odata-syntax/</guid>
 				<description>&lt;p&gt;Microsoft&amp;rsquo; data service commonly provide RESTful interfaces that utilize &lt;a href=&#34;https://www.odata.org/getting-started/basic-tutorial/&#34;&gt;OData syntax&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;filter-rows&#34;&gt;Filter Rows&lt;/h2&gt;&#xA;&lt;p&gt;Beside the option to retrieve all records beloning to a entity you have the ability to specify additional &lt;code&gt;filter&lt;/code&gt; criteria for your query. The filter employs various syntax and operators, including acronyms such as &lt;strong&gt;&lt;code&gt;eq&lt;/code&gt;&lt;/strong&gt; for equal and &lt;strong&gt;&lt;code&gt;gt&lt;/code&gt;&lt;/strong&gt; for greater than, among others.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th style=&#34;text-align: left&#34;&gt;Symbol&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th style=&#34;text-align: left&#34;&gt;Operator&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th style=&#34;text-align: left&#34;&gt;Example&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;eq&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;=&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;$filter=size eq 100&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;ne&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;!=&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;$filter=size ne 200&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;gt&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;&amp;gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;$filter=size gt 50&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;ge&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;&amp;gt;=&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;$filter=size ge 100&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;lt&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;&amp;lt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;$filter=size lt 300&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;le&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;&amp;lt;=&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;$filter=size le 125&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;and&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;&amp;amp;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;$filter=size gt 100 and size lt 200&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;or&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;|&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;$filter=size lt 10 or size gt 400&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;not&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;!&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;$filter=not size eq 100&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;()&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;&lt;em&gt;precedence&lt;/em&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;$filter=(size eq 100) or (...)&lt;/code&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;The query response has the following schema.&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>MongoDB for Data-Intensive Applications</title>
-				<link>https://schafsam.github.io/posts/mongodb-backend-engine/</link>
+				<link>https://schafsam.github.io/2023/04/mongodb-for-data-intensive-applications/</link>
 				<pubDate>Fri, 28 Apr 2023 00:00:00 +0000</pubDate>
-				<guid>https://schafsam.github.io/posts/mongodb-backend-engine/</guid>
+				<guid>https://schafsam.github.io/2023/04/mongodb-for-data-intensive-applications/</guid>
 				<description>&lt;p&gt;MongoDB is scalable and schema-less NoSQL key-value storage, which makes it handy for applications to use as a persistent layer. The two features in this post views and change streams from MongoDB can turn your application into a full-fetched back-end engine for &lt;a href=&#34;https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/&#34;&gt;data-intensive applications&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;change-streams&#34;&gt;Change Streams&lt;/h2&gt;&#xA;&lt;p&gt;Since MongoDB 3.6 you can use &lt;a href=&#34;https://www.mongodb.com/docs/manual/changeStreams/&#34;&gt;change streams&lt;/a&gt; to create event-driven applications for data processing.&#xA;Whenever an update occurs in a specific collection, MongoDB triggers a change event with the modified data. With this functionality you can implement the design pattern &lt;a href=&#34;https://en.wikipedia.org/wiki/Change_data_capture&#34;&gt;change data capture (CDC)&lt;/a&gt; and other systems or applications can automatically consume the change in real time. This can be useful in a variety of scenarios, such as keeping a distributed cache up-to-date, triggering notifications, or synchronizing data across different systems.&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>Python Executable with Dunder Main</title>
-				<link>https://schafsam.github.io/posts/python-executable/</link>
+				<link>https://schafsam.github.io/2020/02/python-executable/</link>
 				<pubDate>Thu, 06 Feb 2020 21:00:57 +0700</pubDate>
-				<guid>https://schafsam.github.io/posts/python-executable/</guid>
+				<guid>https://schafsam.github.io/2020/02/python-executable/</guid>
 				<description>&lt;p&gt;With Python you can run a directory as an executable.&#xA;The &lt;code&gt;__main__.py&lt;/code&gt; file in &lt;code&gt;myprojectfolder&lt;/code&gt; serves as the entry point for your program.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;myprojectfolder/&#xA;    |_ __main__.py&#xA;    |_ __init__.py&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;With &lt;code&gt;__main__.py&lt;/code&gt; being:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;So you can call the directory like this:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;python myprojectfolder&#xA;Hello&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;This functionality works not only at the top-level directory but also in submodules.&#xA;If your project has a subfolder with its own &lt;code&gt;__main__.py&lt;/code&gt;, you can access it by running &lt;code&gt;python myprojectfolder.subfolder&lt;/code&gt;, and Python will execute the code inside that file as the entry point,&lt;/p&gt;</description>
 			</item>
 			<item>
@@ -92,16 +92,16 @@
 			</item>
 			<item>
 				<title></title>
-				<link>https://schafsam.github.io/posts/timesfm-model/</link>
+				<link>https://schafsam.github.io/1/01/</link>
 				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-				<guid>https://schafsam.github.io/posts/timesfm-model/</guid>
+				<guid>https://schafsam.github.io/1/01/</guid>
 				<description>&lt;p&gt;&lt;a href=&#34;https://huggingface.co/collections/google/timesfm-release&#34;&gt;hugging face&lt;/a&gt;&#xA;[github](&#xA;&lt;a href=&#34;https://arxiv.org/pdf/2310.10688&#34;&gt;paper&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://pantheon.corp.google.com/vertex-ai/publishers/google/model-garden/timesfm&#34;&gt;https://pantheon.corp.google.com/vertex-ai/publishers/google/model-garden/timesfm&lt;/a&gt;&#xA;pantheon.corp.google.com - Google Single Sign On: Sign into corp&#xA;&lt;a href=&#34;https://login.corp.google.com/c/favicon.ico&#34;&gt;https://login.corp.google.com/c/favicon.ico&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://login.corp.google.com/request?authLevel=2000000&amp;amp;c=1&amp;amp;d=https%3A%2F%2Fpantheon.corp.google.com%2Fvertex-ai%2Fpublishers%2Fgoogle%2Fmodel-garden%2Ftimesfm%3Fupxsrf%3DAM2vRLlH7AhUZxPcEOzJufSd5TpCuLMJ7rWjtF_WGbM-eV4xzA%253A1781814927876&amp;amp;maxAge=1200&amp;amp;s=pantheon.corp.google.com%3A443%2Fuberproxy%2F&#34;&gt;https://login.corp.google.com/request?authLevel=2000000&amp;amp;c=1&amp;amp;d=https%3A%2F%2Fpantheon.corp.google.com%2Fvertex-ai%2Fpublishers%2Fgoogle%2Fmodel-garden%2Ftimesfm%3Fupxsrf%3DAM2vRLlH7AhUZxPcEOzJufSd5TpCuLMJ7rWjtF_WGbM-eV4xzA%253A1781814927876&amp;amp;maxAge=1200&amp;amp;s=pantheon.corp.google.com%3A443%2Fuberproxy%2F&lt;/a&gt;&lt;/p&gt;</description>
 			</item>
 			<item>
 				<title>My 5 Cent on Repository Pattern</title>
-				<link>https://schafsam.github.io/posts/5-cent-repository-pattern/</link>
+				<link>https://schafsam.github.io/1/01/my-5-cent-on-repository-pattern/</link>
 				<pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-				<guid>https://schafsam.github.io/posts/5-cent-repository-pattern/</guid>
+				<guid>https://schafsam.github.io/1/01/my-5-cent-on-repository-pattern/</guid>
 				<description>&lt;p&gt;I read this two points for when not to use a Repository Pattern.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Simple applications, overkill for small projects with minimal data logic.&lt;/li&gt;&#xA;&lt;li&gt;Direct ORM usage, if your ORM (e.g., Django ORM) already abstracts data access sufficiently.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;So what is a simple application and&lt;/p&gt;&#xA;&lt;p&gt;Comments on the article.&lt;/p&gt;&#xA;&lt;p&gt;Maybe it is an anti-pattern.&#xA;&lt;a href=&#34;https://medium.com/@iamprovidence/is-repository-an-anti-pattern-6aba7422fa48&#34;&gt;https://medium.com/@iamprovidence/is-repository-an-anti-pattern-6aba7422fa48&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://medium.com/@kmuhsinn/the-repository-pattern-in-python-write-flexible-testable-code-with-fastapi-examples-aa0105e40776&#34;&gt;https://medium.com/@kmuhsinn/the-repository-pattern-in-python-write-flexible-testable-code-with-fastapi-examples-aa0105e40776&lt;/a&gt;&lt;/p&gt;</description>
 			</item>
 	</channel>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.168.0">
+
+
+<title>Some Python Packages - Sc Online</title>
+<meta property="og:title" content="Some Python Packages - Sc Online">
+
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+<link rel="stylesheet" href="/css/custom.css">
+
+<style>
+  html { scroll-behavior: smooth; }
+
+  .post-toc { margin: 1.5rem 0; font-size: 0.9rem; line-height: 1.5; font-family: 'Lato', sans-serif; }
+  .post-toc summary { cursor: pointer; font-weight: 700; color: #222; }
+  .post-toc ul { list-style: none; margin: 0.5rem 0 0; padding: 0; }
+  .post-toc ul ul { padding-left: 1rem; }
+  .post-toc li { margin: 0.2rem 0; }
+  .post-toc a { color: #777; text-decoration: none; }
+  .post-toc a:hover { color: #111; }
+  .post-toc a.is-active { color: #000; font-weight: 600; }
+
+  .post-toc a {
+    color: #777;
+    text-decoration: none;
+    transition: background 150ms ease, color 150ms ease;
+  }
+   
+  .post-toc a:hover,
+  .post-toc a.is-active {
+    color: #111;
+    background: #CBF8DF;
+    box-shadow: 0 0 0 2px #CBF8DF;  
+    border-radius: 2px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  .post-toc a.is-active { font-weight: 600; }
+
+   
+  @media (min-width: 1200px) {
+    .post-toc {
+      position: fixed;
+      top: 6rem;
+      left: calc(50vw - 600px);  
+      width: 190px;
+      max-height: calc(100vh - 8rem);
+      overflow-y: auto;          
+      margin: 0;
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+    .post-toc summary {
+      cursor: default;
+      pointer-events: none;      
+      list-style: none;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    .post-toc summary::-webkit-details-marker { display: none; }
+  }
+</style>
+
+<script>
+  
+  (function () {
+    document.addEventListener('DOMContentLoaded', function () {
+      var toc = document.querySelector('.post-toc');
+      if (!toc) return;
+      var links = Array.prototype.slice.call(toc.querySelectorAll('a[href^="#"]'));
+      var map = {}, headings = [];
+      links.forEach(function (a) {
+        var id = decodeURIComponent(a.getAttribute('href').slice(1));
+        var h = document.getElementById(id);
+        if (h) { map[id] = a; headings.push(h); }
+      });
+      if (!headings.length) return;
+
+      function setActive(id) {
+        for (var k in map) map[k].classList.toggle('is-active', k === id);
+      }
+      function onScroll() {
+        var current = '';
+        for (var i = 0; i < headings.length; i++) {
+          if (headings[i].getBoundingClientRect().top <= 80) current = headings[i].id;
+          else break;
+        }
+        setActive(current);
+      }
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          ticking = true;
+          window.requestAnimationFrame(function () { onScroll(); ticking = false; });
+        }
+      }, { passive: true });
+      onScroll();
+    });
+  })();
+</script>
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/">Home</a></li>
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/posts/">Blog</a></li>
+    
+    <li><a href="/resume/">Resume</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+
+    <h1 class="article-title">Some Python Packages</h1>
+
+    
+
+    
+    
+    <aside class="post-toc">
+      <details open>
+        <summary>Contents</summary>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#apscheduler">APScheduler</a></li>
+  </ul>
+</nav>
+      </details>
+    </aside>
+    
+
+    <div class="article-content">
+      <h2 id="apscheduler">APScheduler</h2>
+<p>The first time I came arround the package <a href="https://apscheduler.readthedocs.io/en/3.x/userguide.html#basic-concepts">APScheduler</a> is due to the package telegram. It is a lightweight, in-process library ideal for simple, time-based job scheduling. As a contrast, <a href="">Celery</a> is a heavyweight, ditributed task queue designed for heavy, asynchronous workloads across multiple machines.</p>
+<p>With the <a href="https://github.com/agronholm/apscheduler">source</a>.</p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+
+    
+  </body>
+</html>
+
