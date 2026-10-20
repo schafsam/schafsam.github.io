@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.158.0">
+<meta name="generator" content="Hugo 0.168.0">
 
 
 <title>Global Information Tracker (git) - Sc Online</title>
@@ -30,43 +30,96 @@
 
 <link rel="stylesheet" href="/css/custom.css">
 
-<script type="application/ld+json">
+<style>
+  html { scroll-behavior: smooth; }
 
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Global Information Tracker (git)",
-  "image": "https://schafsam.github.io/",
-  "datePublished": "2024-07-01T00:00:00Z",
-  "dateModified": "2024-07-01T00:00:00Z",
-  "author": {
-    "@type": "Person",
-    "name": "Schafsam"
-  },
-  "mainEntityOfPage": { "@type": "WebPage" },
-   "publisher": {
-    "@type": "Organization",
-    "name":  null ,
-    "logo": {
-      "@type": "ImageObject",
-      "url": {"alt":"Logo","height":50,"url":"logo.png","width":50}
+  .post-toc { margin: 1.5rem 0; font-size: 0.9rem; line-height: 1.5; font-family: 'Lato', sans-serif; }
+  .post-toc summary { cursor: pointer; font-weight: 700; color: #222; }
+  .post-toc ul { list-style: none; margin: 0.5rem 0 0; padding: 0; }
+  .post-toc ul ul { padding-left: 1rem; }
+  .post-toc li { margin: 0.2rem 0; }
+  .post-toc a { color: #777; text-decoration: none; }
+  .post-toc a:hover { color: #111; }
+  .post-toc a.is-active { color: #000; font-weight: 600; }
+
+  .post-toc a {
+    color: #777;
+    text-decoration: none;
+    transition: background 150ms ease, color 150ms ease;
+  }
+   
+  .post-toc a:hover,
+  .post-toc a.is-active {
+    color: #111;
+    background: #CBF8DF;
+    box-shadow: 0 0 0 2px #CBF8DF;  
+    border-radius: 2px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  .post-toc a.is-active { font-weight: 600; }
+
+   
+  @media (min-width: 1200px) {
+    .post-toc {
+      position: fixed;
+      top: 6rem;
+      left: calc(50vw - 600px);  
+      width: 190px;
+      max-height: calc(100vh - 8rem);
+      overflow-y: auto;          
+      margin: 0;
+      font-size: 0.8rem;
+      line-height: 1.4;
     }
-  },
-  "description": "Git commands I like to remember.\nSelect Hunks Interactively With git add -p \u0026lt;file\u0026gt; for patch mode the file or files are not just added but you can choose which so called hunks of the changes should staged for commiting.\n... (1/1) Stage this hunk [y,n,q,a,d,s,e,p,?]? y accepts the hunk to be staged. n declines the hunk to be staged. s tries to split the hunk up into smaller pieces. a accepts the hunk and any remaining. d declines the hunk and any remaining. Forgott a Thing To change your last commit and add something or fix a typo in the commit messag, use --amend:\n",
-  "keywords": []
-}
+    .post-toc summary {
+      cursor: default;
+      pointer-events: none;      
+      list-style: none;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    .post-toc summary::-webkit-details-marker { display: none; }
+  }
+</style>
 
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name":  null ,
-  "url": "https://schafsam.github.io/",
-  "sameAs": [
-    "https://github.com/schafsam"
-  ]
-}
+<script>
+  
+  (function () {
+    document.addEventListener('DOMContentLoaded', function () {
+      var toc = document.querySelector('.post-toc');
+      if (!toc) return;
+      var links = Array.prototype.slice.call(toc.querySelectorAll('a[href^="#"]'));
+      var map = {}, headings = [];
+      links.forEach(function (a) {
+        var id = decodeURIComponent(a.getAttribute('href').slice(1));
+        var h = document.getElementById(id);
+        if (h) { map[id] = a; headings.push(h); }
+      });
+      if (!headings.length) return;
+
+      function setActive(id) {
+        for (var k in map) map[k].classList.toggle('is-active', k === id);
+      }
+      function onScroll() {
+        var current = '';
+        for (var i = 0; i < headings.length; i++) {
+          if (headings[i].getBoundingClientRect().top <= 80) current = headings[i].id;
+          else break;
+        }
+        setActive(current);
+      }
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          ticking = true;
+          window.requestAnimationFrame(function () { onScroll(); ticking = false; });
+        }
+      }, { passive: true });
+      onScroll();
+    });
+  })();
 </script>
-
 
 
   </head>
@@ -106,9 +159,34 @@
 
     
 
+    
+    
+    <aside class="post-toc">
+      <details open>
+        <summary>Contents</summary>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#put-aside-and-get-back">Put Aside and Get Back</a></li>
+    <li><a href="#select-hunks-interactively">Select Hunks Interactively</a></li>
+    <li><a href="#forgott-a-thing">Forgott a Thing</a></li>
+    <li><a href="#roll-back-the-remote">Roll back the remote</a></li>
+    <li><a href="#add-forked-branch">Add Forked Branch</a></li>
+  </ul>
+</nav>
+      </details>
+    </aside>
+    
+
     <div class="article-content">
-      
       <p>Git commands I like to remember.</p>
+<h2 id="put-aside-and-get-back">Put Aside and Get Back</h2>
+<p><a href="git-scm.com/book/en/V1/Git-Tools-Stashing"><code>git stash</code></a> puts <em>uncommitted changes</em> in a special commit to retrieve later.
+When you have some work that is not yet ready to commit, but you need to somethein else to the repo or get the fresh remote changes.</p>
+<ul>
+<li><code>git stash save</code> if you have uncommitted work.</li>
+<li><code>git pull --rebase</code> get updates from the remote and apply them</li>
+<li><code>git stash pop</code> restore your uncommitted work.</li>
+</ul>
 <h2 id="select-hunks-interactively">Select Hunks Interactively</h2>
 <p>With <code>git add -p &lt;file&gt;</code> for patch mode the file or files are not just added but you can choose which so called hunks of the changes should staged for commiting.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>...
@@ -126,7 +204,21 @@
 </span></span><span style="display:flex;"><span>git add the_file.txt
 </span></span><span style="display:flex;"><span>git commit --amend
 </span></span></code></pre></div><p>You can now overwrite your previous commit and have just one clean commit.</p>
-
+<h2 id="roll-back-the-remote">Roll back the remote</h2>
+<p>You need the desired commit somewhere in your local repo. You can find it with <code>git log</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push --force origin &lt;commit-ish&gt;:&lt;remote branch&gt;
+</span></span></code></pre></div><p>commit-ish can be the commit hash or a tag.</p>
+<h2 id="add-forked-branch">Add Forked Branch</h2>
+<p>Adding a forked branch to the actual project is helpful to pick or patch the main branch.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git remote add forked https://github.com/someone-else/something.git
+</span></span><span style="display:flex;"><span>git fetch forked
+</span></span><span style="display:flex;"><span>git checkout -b somethingBranch forked/main
+</span></span></code></pre></div><p>The checkout command creates a local branch that tracks the remote branch <code>somethingBranch</code> on remote forked.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git branch
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  main
+</span></span><span style="display:flex;"><span>* somethingBranch
+</span></span></code></pre></div>
     </div>
   </article>
 
